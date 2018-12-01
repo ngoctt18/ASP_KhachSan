@@ -1,14 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageAdmin.master" AutoEventWireup="true" CodeFile="rooms.aspx.cs" Inherits="Admin_rooms" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageAdmin.master" AutoEventWireup="true" CodeFile="roomsList.aspx.cs" Inherits="Admin_rooms" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-	Danh sách các phòng
+	Quản lý các phòng
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
 	<asp:GridView class="table table-bordered" ID="grvDSDatPhong" runat="server" AutoGenerateColumns="False"> 
 		<Columns>
 			<asp:BoundField DataField="room_id" HeaderText="Mã phòng" />
 			<asp:BoundField DataField="room_name" HeaderText="Tên phòng" />
-			<asp:BoundField DataField="avatar" HeaderText="Hình ảnh" />
+			<asp:TemplateField HeaderText="Hình ảnh">
+				<ItemTemplate>
+					<asp:Image ID="img" ImageUrl='<%#Bind("avatar") %>' runat="server" class="imgTable" />
+				</ItemTemplate>
+			</asp:TemplateField>
 			<asp:BoundField DataField="room_status" HeaderText="Trạng thái" />
 			<asp:BoundField DataField="room_type_id" HeaderText="Mã loại phòng" />
 			<%--<asp:TemplateField HeaderText="Xoa">
@@ -26,6 +30,8 @@
 			</asp:TemplateField>--%>
 		</Columns>
 	</asp:GridView>
+	<p></p>
+	<asp:Button ID="btnRoomAdd" class="float-right" runat="server" Text="Thêm phòng" PostBackUrl="~/Admin/roomsAdd.aspx" />
 </asp:Content>
 
 

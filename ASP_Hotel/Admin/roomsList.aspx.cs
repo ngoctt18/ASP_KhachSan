@@ -16,7 +16,7 @@ public partial class Admin_rooms : System.Web.UI.Page
 
 	private void DanhSachDatPhong()
 	{
-		grvDSDatPhong.DataSource = data.getRooms();
+		grvDSDatPhong.DataSource = data.getAllRooms();
 		DataBind();
 	}
 }

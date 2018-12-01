@@ -16,13 +16,17 @@
 
   <!-- Custom styles for this template-->
   <link href="assets/css/sb-admin.min.css" rel="stylesheet">
+  <style>
+	.imgTable {width: 100px;}
+	.ddlAdd {width: 28%;height: 35px;}
+  </style>
 
 </head>
 
 <body id="page-top">
     <form id="form1" runat="server">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="navbar-brand mr-1" href="index.html">Admin Controlpanel</a>
+    <a class="navbar-brand mr-1" href="roomsList.aspx">Admin Controlpanel</a>
     <!-- Navbar Search -->
     <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
     </div>
@@ -46,20 +50,20 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="schedulesList.aspx">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Danh sách đặt phòng</span>
+          <span>Quản lý đặt phòng</span>
         </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="roomsList.aspx">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Quản lý phòng</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="billsList.aspx">
             <i class="fas fa-fw fa-table"></i>
-            <span>Danh sách hóa đơn</span></a>
+            <span>Quản lý hóa đơn</span></a>
           </li>
         </ul>
 
