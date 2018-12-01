@@ -1,5 +1,4 @@
-# ASP_Hotel
-ASP_Hotel bản mới cập nhật
+# CHÚ Ý
 # Cách dùng:
 1. Tạo thư mục trên máy để chứa source code
 2. chuột phải trong thư mục chọn git bash here
