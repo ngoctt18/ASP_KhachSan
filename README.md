@@ -1,4 +1,4 @@
-# ASP_Hotel
+# ASP_KhachSan
 ASP_Hotel bản mới cập nhật
 # Cách dùng:
 1. Tạo thư mục trên máy để chứa source code
