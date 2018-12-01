@@ -34,8 +34,8 @@ public partial class index : System.Web.UI.Page
 
 	protected void btn_BookRoom_Click(object sender, EventArgs e)
 	{
-		try
-		{
+		//try
+		//{
 			schedules schedule = new schedules();
 			schedule.fullname = txtFullname.Text;
 			schedule.phone = txtPhone.Text;
@@ -44,15 +44,22 @@ public partial class index : System.Web.UI.Page
 			schedule.date_out = DateTime.Parse(txtDateOut.Text);
 			schedule.room_id = int.Parse(category.Text);
 
-			data.ThemDatPhong(schedule);
+			// Thêm đặt phòng
+			Int32 schedule_id = data.ThemDatPhong(schedule);
+
+			// Cập nhật room_status phòng vừa đặt là 1 (Đã dùng)
+			// data.updateRoomUsed(schedule.room_id);
+
+			// Tạo 1 bills cho KH này
+			data.createBills(schedule_id);
 
 			err_msg.ForeColor = System.Drawing.Color.Aqua;
 			err_msg.Text = "Bạn đã thêm đặt phòng thành công!";
-		}
-		catch (Exception ex)
-		{
-			err_msg.ForeColor = System.Drawing.Color.Red;
-			err_msg.Text = "Đã xảy ra lỗi: " + ex.Message;
-		}
+		//}
+		//catch (Exception ex)
+		//{
+			//err_msg.ForeColor = System.Drawing.Color.Red;
+			//err_msg.Text = "Đã xảy ra lỗi: " + ex.Message;
+		//}
 	}
 }

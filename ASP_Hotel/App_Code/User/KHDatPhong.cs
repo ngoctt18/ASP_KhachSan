@@ -17,7 +17,7 @@ public class KHDatPhong
 		con = new SqlConnection(strConnect);
 	}
 
-	// Get ra danh sách các phòng từ bảng rooms
+	// Get ra danh sách các phòng trống từ bảng rooms
 	public List<rooms> getRooms()
 	{
 		List<rooms> li = new List<rooms>();
@@ -41,17 +41,40 @@ public class KHDatPhong
 	}
 
 	// Khách hàng Thêm 1 đặt phòng
-	public void ThemDatPhong(schedules book)
+	public int ThemDatPhong(schedules schedule)
 	{
-		string sql = "Insert Into schedules (fullname, phone, email, room_id, date_in, date_out) Values (@fullname, @phone, @email, @room_id, @date_in, @date_out)";
+		string sql = "Insert Into schedules (fullname, phone, email, room_id, date_in, date_out) output INSERTED.schedule_id Values (@fullname, @phone, @email, @room_id, @date_in, @date_out)";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
-		cmd.Parameters.AddWithValue("fullname", book.fullname);
-		cmd.Parameters.AddWithValue("phone", book.phone);
-		cmd.Parameters.AddWithValue("email", book.email);
-		cmd.Parameters.AddWithValue("room_id", book.room_id);
-		cmd.Parameters.AddWithValue("date_in", book.date_in);
-		cmd.Parameters.AddWithValue("date_out", book.date_out);
+		cmd.Parameters.AddWithValue("fullname", schedule.fullname);
+		cmd.Parameters.AddWithValue("phone", schedule.phone);
+		cmd.Parameters.AddWithValue("email", schedule.email);
+		cmd.Parameters.AddWithValue("room_id", schedule.room_id);
+		cmd.Parameters.AddWithValue("date_in", schedule.date_in);
+		cmd.Parameters.AddWithValue("date_out", schedule.date_out);
+		int schedule_id = Convert.ToInt32(cmd.ExecuteScalar());
+		con.Close();
+		return schedule_id;
+	}
+
+	// Cập nhật room_status của phòng là 1 (Đã dùng) sau khi phòng đó được đặt
+	public void updateRoomUsed(int room_id)
+	{
+		string sql = "Update rooms set room_status=1 where room_id=@room_id";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("room_id", room_id);
+		cmd.ExecuteNonQuery();
+		con.Close();
+	}
+
+	// Tạo hóa đơn bills cho khách vừa đặt phòng
+	public void createBills(int schedule_id)
+	{
+		string sql = "Insert Into bills (schedule_id) Values (@schedule_id)";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("schedule_id", schedule_id);
 		cmd.ExecuteNonQuery();
 		con.Close();
 	}
