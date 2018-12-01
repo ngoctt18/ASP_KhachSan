@@ -1,0 +1,13 @@
+1. git init: khởi tạo 
+
+2. git status: kiểm tra trạng thái thay đổi
+
+3. git add . : up thay đổi lên
+
+4. git status phát nữa
+
+5. git commit -m 'Nhập nội dung thay đổi'
+
+6. git pull origin master: cập nhật code về máy
+
+6. git push origin master: đẩy code từ máy mình lên
