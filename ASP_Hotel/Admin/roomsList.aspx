@@ -8,30 +8,22 @@
 		<Columns>
 			<asp:BoundField DataField="room_id" HeaderText="Mã phòng" />
 			<asp:BoundField DataField="room_name" HeaderText="Tên phòng" />
-			<asp:TemplateField HeaderText="Hình ảnh">
+			<asp:BoundField DataField="getRoom_status" HeaderText="Trạng thái" />
+			<asp:BoundField DataField="room_type_name" HeaderText="Loại phòng" />
+			<asp:TemplateField HeaderText="Xoa">
 				<ItemTemplate>
-					<asp:Image ID="img" ImageUrl='<%#Bind("avatar") %>' runat="server" class="imgTable" />
+					<asp:Button ID="xoa" class="btn btn-danger" CommandName="xoa" CommandArgument='<%#Bind("room_id") %>'
+						OnCommand="Xoa_Click" runat="server" Text="Xóa" 
+						OnClientClick="return confirm('Bạn chắc muốn xóa phòng này?')" />
+				
+					<asp:Button ID="sua" class="btn btn-info" CommandName="sua" CommandArgument='<%#Bind("room_id") %>'
+						OnCommand="Sua_Click" runat="server" Text="Sửa"/>
 				</ItemTemplate>
 			</asp:TemplateField>
-			<asp:BoundField DataField="room_status" HeaderText="Trạng thái" />
-			<asp:BoundField DataField="room_type_id" HeaderText="Mã loại phòng" />
-			<%--<asp:TemplateField HeaderText="Xoa">
-				<ItemTemplate>
-					<asp:Button ID="xoa" CommandName="xoa" CommandArgument='<%#Bind("masv") %>'
-						OnCommand="Xoa_Click" runat="server" Text="Xoa" 
-						OnClientClick="return confirm('Ban co muon xoa khong?')" />
-				</ItemTemplate>
-			</asp:TemplateField>
-			<asp:TemplateField HeaderText="Sua">
-				<ItemTemplate>
-					<asp:Button ID="sua" CommandName="sua" CommandArgument='<%#Bind("masv") %>'
-						OnCommand="Sua_Click" runat="server" Text="Sua"/>
-				</ItemTemplate>
-			</asp:TemplateField>--%>
 		</Columns>
 	</asp:GridView>
 	<p></p>
-	<asp:Button ID="btnRoomAdd" class="float-right" runat="server" Text="Thêm phòng" PostBackUrl="~/Admin/roomsAdd.aspx" />
+	<asp:Button ID="btnRoomAdd" class="float-right btn btn-success" runat="server" Text="Thêm phòng" PostBackUrl="~/Admin/roomsAdd.aspx" />
 </asp:Content>
 
 

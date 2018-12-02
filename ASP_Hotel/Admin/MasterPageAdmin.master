@@ -43,6 +43,11 @@
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
         </div>
       </li>
+		<li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="../index.aspx" id="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw">HomePage</i>
+        </a>
+      </li>
     </ul>
   </nav>
 

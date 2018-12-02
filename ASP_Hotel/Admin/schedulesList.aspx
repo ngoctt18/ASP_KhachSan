@@ -10,7 +10,7 @@
 			<asp:BoundField DataField="fullname" HeaderText="Họ và tên" />
 			<asp:BoundField DataField="phone" HeaderText="Điện thoại" />
 			<asp:BoundField DataField="email" HeaderText="Email" />
-			<asp:BoundField DataField="room_id" HeaderText="Mã phòng" />
+			<asp:BoundField DataField="room_name" HeaderText="Tên phòng" />
 			<asp:BoundField DataField="date_in" HeaderText="Ngày đặt phòng" />
 			<asp:BoundField DataField="date_out" HeaderText="Ngày trả phòng" />
 			<asp:BoundField DataField="schedule_status" HeaderText="Trạng thái" />

@@ -31,7 +31,6 @@ public class KHDatPhong
 			rooms room = new rooms();
 			room.room_id = (int)rd["room_id"];
 			room.room_name = (string)rd["room_name"];
-			room.avatar = (string)rd["avatar"];
 			room.room_status = (Boolean)rd["room_status"];
 			room.room_type_id = (int)rd["room_type_id"];
 			li.Add(room);
@@ -44,8 +43,7 @@ public class KHDatPhong
 	public List<rooms> getAllRooms()
 	{
 		List<rooms> li = new List<rooms>();
-		// Phòng có room_status = 0 là phòng trống chưa có người
-		string sql = "Select * From rooms";
+		string sql = "Select * From rooms, room_types where rooms.room_type_id=room_types.room_type_id";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -54,9 +52,8 @@ public class KHDatPhong
 			rooms room = new rooms();
 			room.room_id = (int)rd["room_id"];
 			room.room_name = (string)rd["room_name"];
-			room.avatar = (string)rd["avatar"];
 			room.room_status = (Boolean)rd["room_status"];
-			room.room_type_id = (int)rd["room_type_id"];
+			room.room_type_name = (string)rd["room_type_name"];
 			li.Add(room);
 		}
 		con.Close();
@@ -96,12 +93,15 @@ public class KHDatPhong
 	public void createBills(int schedule_id, double num_day)
 	{
 		double price_room = num_day * 100;
-		string sql = "Insert Into bills (schedule_id, num_day, price_room) Values (@schedule_id, @num_day, @price_room)";
+		float price_service = 0;
+		string sql = "Insert Into bills (schedule_id, num_day, price_room, price_service, total_price) Values (@schedule_id, @num_day, @price_room, @price_service, @total_price)";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		cmd.Parameters.AddWithValue("schedule_id", schedule_id);
 		cmd.Parameters.AddWithValue("num_day", num_day);
 		cmd.Parameters.AddWithValue("price_room", price_room);
+		cmd.Parameters.AddWithValue("price_service", price_service);
+		cmd.Parameters.AddWithValue("total_price", price_room);
 		cmd.ExecuteNonQuery();
 		con.Close();
 	}
@@ -109,7 +109,7 @@ public class KHDatPhong
 	// Get ra danh sách đặt phòng
 	public List<schedules> getSchedules()
 	{
-		string sql = "Select * From schedules";
+		string sql = "Select * From schedules, rooms where schedules.room_id=rooms.room_id";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -122,6 +122,7 @@ public class KHDatPhong
 			schedule.phone = (string)rd["phone"];
 			schedule.email = (string)rd["email"];
 			schedule.room_id = (int)rd["room_id"];
+			schedule.room_name = (string)rd["room_name"];
 			schedule.date_in = (DateTime)rd["date_in"];
 			schedule.date_out = (DateTime)rd["date_out"];
 			schedule.schedule_status = (Boolean)rd["schedule_status"];
@@ -149,5 +150,89 @@ public class KHDatPhong
 		}
 		con.Close();
 		return li;
+	}
+
+	// Thêm phòng vào bảng rooms
+	public void createRoom(rooms room)
+	{
+		string sql = "Insert Into rooms (room_name, room_status, room_type_id) Values (@room_name, @room_status, @room_type_id)";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("room_name", room.room_name);
+		cmd.Parameters.AddWithValue("room_status", room.room_status);
+		cmd.Parameters.AddWithValue("room_type_id", room.room_type_id);
+		cmd.ExecuteNonQuery();
+		con.Close();
+	}
+
+
+	// Hiển thị danh sách hóa đơn
+	public List<bills> getBills()
+	{
+		List<bills> li = new List<bills>();
+		string sql = "Select * From bills";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		SqlDataReader rd = cmd.ExecuteReader();
+		while (rd.Read())
+		{
+			bills bill = new bills();
+			bill.bill_id = (int)rd["bill_id"];
+			bill.schedule_id = (int)rd["schedule_id"];
+			bill.num_day = (int)rd["num_day"];
+			bill.price_room = Convert.ToInt32(rd["price_room"]);
+			bill.price_service = Convert.ToInt32(rd["price_service"]);
+			bill.total_price = Convert.ToInt32(rd["total_price"]);
+			bill.bill_status = (Boolean)rd["bill_status"];
+			li.Add(bill);
+		}
+		con.Close();
+		return li;
+	}
+
+	// Xóa 1 phòng 
+	public void deleteRoom(int room_id)
+	{
+		string sql = "Delete From rooms Where room_id=@room_id";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("room_id", room_id);
+		cmd.ExecuteNonQuery();
+		con.Close();
+	}
+
+	// Lấy phòng theo mã phòng room_id
+	public rooms get1Room(int room_id)
+	{
+		string sql = "Select * From rooms, room_types where rooms.room_type_id=room_types.room_type_id And room_id=@room_id";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("room_id", room_id);
+		SqlDataReader rd = cmd.ExecuteReader();
+		rooms room = null;
+		if (rd.Read())
+		{
+			room = new rooms();
+			room.room_id = (int)rd["room_id"];
+			room.room_name = (string)rd["room_name"];
+			room.room_status = (Boolean)rd["room_status"];
+			room.room_type_id = (int)rd["room_type_id"];
+		}
+		con.Close();
+		return room;
+	}
+
+	// Cập nhật thông tin phòng
+	public void updateRoom(rooms room)
+	{
+		string sql = "Update rooms Set room_name=@room_name, room_status=@room_status, room_type_id=@room_type_id Where room_id=@room_id";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("room_name", room.room_name);
+		cmd.Parameters.AddWithValue("room_status", room.room_status);
+		cmd.Parameters.AddWithValue("room_type_id", room.room_type_id);
+		cmd.Parameters.AddWithValue("room_id", room.room_id);
+		cmd.ExecuteNonQuery();
+		con.Close();
 	}
 }

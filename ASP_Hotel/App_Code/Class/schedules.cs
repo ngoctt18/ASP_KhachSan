@@ -24,4 +24,7 @@ public class schedules
 	public DateTime date_out { get; set; }
 	public Boolean schedule_status { get; set; }
 
+
+	public string room_name { get; set; }
+
 }
