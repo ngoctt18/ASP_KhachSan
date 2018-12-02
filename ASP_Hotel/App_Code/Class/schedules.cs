@@ -27,4 +27,44 @@ public class schedules
 
 	public string room_name { get; set; }
 
+	public string getSchedule_status
+	{
+		get
+		{
+			if (this.schedule_status == true)
+				return "Đã đi";
+			else
+				return "Đang ở";
+		}
+		set
+		{
+			if (this.schedule_status == true)
+				this.schedule_status = true;
+			else
+				this.schedule_status = false;
+		}
+	}
+
+	public string getDate_in
+	{
+		get
+		{
+			return this.date_in.ToString("dd/MM/yyyy");
+		}
+		set
+		{
+			this.date_in = Convert.ToDateTime(value);
+		}
+	}
+	public string getDate_out
+	{
+		get
+		{
+			return this.date_out.ToString("dd/MM/yyyy");
+		}
+		set
+		{
+			this.date_out = Convert.ToDateTime(value);
+		}
+	}
 }

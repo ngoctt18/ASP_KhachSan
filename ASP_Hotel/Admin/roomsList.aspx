@@ -10,11 +10,11 @@
 			<asp:BoundField DataField="room_name" HeaderText="Tên phòng" />
 			<asp:BoundField DataField="getRoom_status" HeaderText="Trạng thái" />
 			<asp:BoundField DataField="room_type_name" HeaderText="Loại phòng" />
-			<asp:TemplateField HeaderText="Xoa">
+			<asp:TemplateField HeaderText="Chức năng">
 				<ItemTemplate>
 					<asp:Button ID="xoa" class="btn btn-danger" CommandName="xoa" CommandArgument='<%#Bind("room_id") %>'
 						OnCommand="Xoa_Click" runat="server" Text="Xóa" 
-						OnClientClick="return confirm('Bạn chắc muốn xóa phòng này?')" />
+						OnClientClick="return confirm('Bạn có chắc muốn xóa phòng này?')" />
 				
 					<asp:Button ID="sua" class="btn btn-info" CommandName="sua" CommandArgument='<%#Bind("room_id") %>'
 						OnCommand="Sua_Click" runat="server" Text="Sửa"/>

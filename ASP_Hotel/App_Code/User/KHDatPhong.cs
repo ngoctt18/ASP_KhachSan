@@ -43,7 +43,7 @@ public class KHDatPhong
 	public List<rooms> getAllRooms()
 	{
 		List<rooms> li = new List<rooms>();
-		string sql = "Select * From rooms, room_types where rooms.room_type_id=room_types.room_type_id";
+		string sql = "Select * From rooms, room_types where rooms.room_type_id=room_types.room_type_id ORDER BY room_id DESC";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -109,7 +109,7 @@ public class KHDatPhong
 	// Get ra danh sách đặt phòng
 	public List<schedules> getSchedules()
 	{
-		string sql = "Select * From schedules, rooms where schedules.room_id=rooms.room_id";
+		string sql = "Select * From schedules, rooms where schedules.room_id=rooms.room_id ORDER BY schedule_id DESC";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -170,7 +170,7 @@ public class KHDatPhong
 	public List<bills> getBills()
 	{
 		List<bills> li = new List<bills>();
-		string sql = "Select * From bills";
+		string sql = "Select * From bills ORDER BY bill_id DESC";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -232,6 +232,77 @@ public class KHDatPhong
 		cmd.Parameters.AddWithValue("room_status", room.room_status);
 		cmd.Parameters.AddWithValue("room_type_id", room.room_type_id);
 		cmd.Parameters.AddWithValue("room_id", room.room_id);
+		cmd.ExecuteNonQuery();
+		con.Close();
+	}
+
+	// Thanh toán hóa đơn
+	public void ThanhToanHoaDon(int bill_id)
+	{
+		// Cập nhật bill_status=1 là thành đã thanh toán
+		con.Open();
+		string sql = "Update bills Set bill_status=1 OUTPUT INSERTED.schedule_id Where bill_id=@bill_id";
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("bill_id", bill_id);
+		// Get last schedule_id updated
+		int schedule_id = Convert.ToInt32(cmd.ExecuteScalar());
+
+		// Cập nhật schedule_status=1 là người đặt phòng đã đi
+		string sql1 = "Update schedules Set schedule_status=1 Where schedule_id=@schedule_id";
+		SqlCommand cmd1 = new SqlCommand(sql1, con);
+		cmd1.Parameters.AddWithValue("schedule_id", schedule_id);
+		cmd1.ExecuteNonQuery();
+		con.Close();
+	}
+
+	// Xóa 1 đặt phòng
+	public void deleteSchedue(int schedule_id)
+	{
+		con.Open();
+		string sql = "Delete From schedules Where schedule_id=@schedule_id";
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("schedule_id", schedule_id);
+		cmd.ExecuteNonQuery();
+		con.Close();
+	}
+
+	// Get 1 schedule theo schedule_id
+	public schedules get1Schedule(int schedule_id)
+	{
+		string sql = "Select * From schedules Where schedule_id=@schedule_id";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("schedule_id", schedule_id);
+		SqlDataReader rd = cmd.ExecuteReader();
+		schedules schedule = null;
+		if (rd.Read())
+		{
+			schedule = new schedules();
+			schedule.schedule_id = (int)rd["schedule_id"];
+			schedule.fullname = (string)rd["fullname"];
+			schedule.phone = (string)rd["phone"];
+			schedule.email = (string)rd["email"];
+			schedule.room_id = (int)rd["room_id"];
+			schedule.date_in = (DateTime)rd["date_in"];
+			schedule.date_out = (DateTime)rd["date_out"];
+		}
+		con.Close();
+		return schedule;
+	}
+
+	// Update schedule 
+	public void updateSchedule(schedules schedule)
+	{
+		string sql = "Update schedules Set fullname=@fullname, phone=@phone, email=@email, room_id=@room_id, date_in=@date_in, date_out=@date_out Where schedule_id=@schedule_id";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("schedule_id", schedule.schedule_id);
+		cmd.Parameters.AddWithValue("fullname", schedule.fullname);
+		cmd.Parameters.AddWithValue("phone", schedule.phone);
+		cmd.Parameters.AddWithValue("email", schedule.email);
+		cmd.Parameters.AddWithValue("room_id", schedule.room_id);
+		cmd.Parameters.AddWithValue("date_in", schedule.date_in);
+		cmd.Parameters.AddWithValue("date_out", schedule.date_out);
 		cmd.ExecuteNonQuery();
 		con.Close();
 	}

@@ -13,6 +13,13 @@
 			<asp:BoundField DataField="price_service" HeaderText="Tiền dịch vụ" />
 			<asp:BoundField DataField="total_price" HeaderText="Tổng tiền" />
 			<asp:BoundField DataField="getBill_status" HeaderText="Trạng thái" />
+			<asp:TemplateField HeaderText="Thanh toán">
+				<ItemTemplate>
+					<asp:Button ID="ThanhToan" class="btn btn-primary" CommandName="ThanhToan" CommandArgument='<%#Bind("bill_id") %>'
+						OnCommand="ThanhToan_Click" runat="server" Text="Thanh toán" 
+						OnClientClick="return confirm('Bạn có muốn thanh toán hóa đơn này?')" />
+				</ItemTemplate>
+			</asp:TemplateField>
 		</Columns>
 	</asp:GridView>
 </asp:Content>

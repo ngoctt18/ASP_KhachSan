@@ -11,9 +11,19 @@
 			<asp:BoundField DataField="phone" HeaderText="Điện thoại" />
 			<asp:BoundField DataField="email" HeaderText="Email" />
 			<asp:BoundField DataField="room_name" HeaderText="Tên phòng" />
-			<asp:BoundField DataField="date_in" HeaderText="Ngày đặt phòng" />
-			<asp:BoundField DataField="date_out" HeaderText="Ngày trả phòng" />
-			<asp:BoundField DataField="schedule_status" HeaderText="Trạng thái" />
+			<asp:BoundField DataField="getDate_in" HeaderText="Ngày đặt phòng" />
+			<asp:BoundField DataField="getDate_out" HeaderText="Ngày trả phòng" />
+			<asp:BoundField DataField="getSchedule_status" HeaderText="Trạng thái" />
+			<asp:TemplateField HeaderText="Chức năng">
+				<ItemTemplate>
+					<asp:Button ID="xoa" class="btn btn-danger" CommandName="xoa" CommandArgument='<%#Bind("schedule_id") %>'
+						OnCommand="Xoa_Click" runat="server" Text="Xóa" 
+						OnClientClick="return confirm('Bạn có chắc muốn xóa đặt phòng này?')" />
+				
+					<asp:Button ID="sua" class="btn btn-info" CommandName="sua" CommandArgument='<%#Bind("schedule_id") %>'
+						OnCommand="Sua_Click" runat="server" Text="Sửa"/>
+				</ItemTemplate>
+			</asp:TemplateField>
 		</Columns>
 	</asp:GridView>
 </asp:Content>

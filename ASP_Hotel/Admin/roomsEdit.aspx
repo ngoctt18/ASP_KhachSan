@@ -34,7 +34,7 @@
    <asp:TableRow>
       <asp:TableCell></asp:TableCell>
       <asp:TableCell>
-		  <asp:Button ID="btnSuaPhong" runat="server" Text="Cập nhật" OnClick="btnSuaPhong_Click" />
+		  <asp:Button ID="btnSuaPhong" class="btn btb-success" runat="server" Text="Cập nhật" OnClick="btnSuaPhong_Click" />
       </asp:TableCell>
    </asp:TableRow>
    </asp:Table>

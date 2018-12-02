@@ -19,4 +19,13 @@ public partial class Admin_billsList : System.Web.UI.Page
 		grvDSHoaDon.DataSource = data.getBills();
 		DataBind();
 	}
+
+	protected void ThanhToan_Click(object sender, CommandEventArgs e)
+	{
+		if (e.CommandName == "ThanhToan") {
+			int bill_id = Convert.ToInt16(e.CommandArgument);
+			data.ThanhToanHoaDon(bill_id);
+			DanhSachHoaDon();
+		}
+	}
 }

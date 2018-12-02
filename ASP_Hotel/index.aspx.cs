@@ -54,7 +54,7 @@ public partial class index : System.Web.UI.Page
 			Int32 schedule_id = data.ThemDatPhong(schedule);
 
 			// Cập nhật room_status phòng vừa đặt là 1 (Đã dùng)
-			// data.updateRoomUsed(schedule.room_id);
+			data.updateRoomUsed(schedule.room_id);
 
 			// Tạo 1 bills cho KH này theo schedule_id
 			data.createBills(schedule_id, num_day);
