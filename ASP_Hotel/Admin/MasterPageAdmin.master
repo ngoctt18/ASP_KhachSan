@@ -17,8 +17,8 @@
   <!-- Custom styles for this template-->
   <link href="assets/css/sb-admin.min.css" rel="stylesheet">
   <style>
-	.imgTable {width: 100px;}
 	.ddlAdd {width: 28%;height: 35px;}
+	.marL15 {margin-left: 15px;}
   </style>
 
 </head>

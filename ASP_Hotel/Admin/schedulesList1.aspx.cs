@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class Admin_schedulesList1 : System.Web.UI.Page
+{
+	KHDatPhong data = new KHDatPhong();
+	protected void Page_Load(object sender, EventArgs e)
+	{
+		if (!IsPostBack)
+			DanhSachDatPhong();
+	}
+
+	private void DanhSachDatPhong()
+	{
+		grvSchedules.DataSource = data.getSchedules1();
+		DataBind();
+	}
+}

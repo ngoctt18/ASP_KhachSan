@@ -89,6 +89,17 @@ public class KHDatPhong
 		con.Close();
 	}
 
+	// Cập nhật room_status của phòng là 0 (Phòng trống) sau khi thanh toán
+	public void updateRoomFree(int room_id)
+	{
+		string sql = "Update rooms set room_status=0 where room_id=@room_id";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		cmd.Parameters.AddWithValue("room_id", room_id);
+		cmd.ExecuteNonQuery();
+		con.Close();
+	}
+
 	// Tạo hóa đơn bills cho khách vừa đặt phòng
 	public void createBills(int schedule_id, double num_day)
 	{
@@ -106,10 +117,37 @@ public class KHDatPhong
 		con.Close();
 	}
 
-	// Get ra danh sách đặt phòng
+	// Get ra danh sách đặt phòng đang ở vs schedule_id=0
 	public List<schedules> getSchedules()
 	{
-		string sql = "Select * From schedules, rooms where schedules.room_id=rooms.room_id ORDER BY schedule_id DESC";
+		string sql = "Select * From schedules, rooms where schedules.room_id=rooms.room_id and schedules.schedule_status=0 ORDER BY schedule_id DESC";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		SqlDataReader rd = cmd.ExecuteReader();
+		List<schedules> li = new List<schedules>();
+		while (rd.Read())
+		{
+			schedules schedule = new schedules();
+			schedule.schedule_id = (int)rd["schedule_id"];
+			schedule.fullname = (string)rd["fullname"];
+			schedule.phone = (string)rd["phone"];
+			schedule.email = (string)rd["email"];
+			schedule.room_id = (int)rd["room_id"];
+			schedule.room_name = (string)rd["room_name"];
+			schedule.date_in = (DateTime)rd["date_in"];
+			schedule.date_out = (DateTime)rd["date_out"];
+			schedule.schedule_status = (Boolean)rd["schedule_status"];
+
+			li.Add(schedule);
+		}
+		con.Close();
+		return li;
+	}
+
+	// Get ra danh sách đặt phòng đã đi vs schedule_id=0
+	public List<schedules> getSchedules1()
+	{
+		string sql = "Select * From schedules, rooms where schedules.room_id=rooms.room_id and schedules.schedule_status=1 ORDER BY schedule_id DESC";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -166,11 +204,35 @@ public class KHDatPhong
 	}
 
 
-	// Hiển thị danh sách hóa đơn
+	// Hiển thị danh sách hóa đơn chưa thanh toán
 	public List<bills> getBills()
 	{
 		List<bills> li = new List<bills>();
-		string sql = "Select * From bills ORDER BY bill_id DESC";
+		string sql = "Select * From bills where bill_status=0 ORDER BY bill_id DESC";
+		con.Open();
+		SqlCommand cmd = new SqlCommand(sql, con);
+		SqlDataReader rd = cmd.ExecuteReader();
+		while (rd.Read())
+		{
+			bills bill = new bills();
+			bill.bill_id = (int)rd["bill_id"];
+			bill.schedule_id = (int)rd["schedule_id"];
+			bill.num_day = (int)rd["num_day"];
+			bill.price_room = Convert.ToInt32(rd["price_room"]);
+			bill.price_service = Convert.ToInt32(rd["price_service"]);
+			bill.total_price = Convert.ToInt32(rd["total_price"]);
+			bill.bill_status = (Boolean)rd["bill_status"];
+			li.Add(bill);
+		}
+		con.Close();
+		return li;
+	}
+
+	// Hiển thị danh sách hóa đơn đã thanh toán
+	public List<bills> getBills1()
+	{
+		List<bills> li = new List<bills>();
+		string sql = "Select * From bills where bill_status=1 ORDER BY bill_id DESC";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -248,10 +310,16 @@ public class KHDatPhong
 		int schedule_id = Convert.ToInt32(cmd.ExecuteScalar());
 
 		// Cập nhật schedule_status=1 là người đặt phòng đã đi
-		string sql1 = "Update schedules Set schedule_status=1 Where schedule_id=@schedule_id";
-		SqlCommand cmd1 = new SqlCommand(sql1, con);
-		cmd1.Parameters.AddWithValue("schedule_id", schedule_id);
-		cmd1.ExecuteNonQuery();
+		string sql_schedule = "Update schedules Set schedule_status=1 Where schedule_id=@schedule_id";
+		SqlCommand cmd_schedule = new SqlCommand(sql_schedule, con);
+		cmd_schedule.Parameters.AddWithValue("schedule_id", schedule_id);
+		cmd_schedule.ExecuteNonQuery();
+
+		// Cập nhật room_status là 0 (Phòng trống) của room_id trong schedules
+		string sql_room = "update rooms set room_status=0 where room_id=(select schedules.room_id From schedules, rooms where schedules.room_id=rooms.room_id and schedules.schedule_id=@schedule_id)";
+		SqlCommand cmd_room = new SqlCommand(sql_room, con);
+		cmd_room.Parameters.AddWithValue("schedule_id", schedule_id);
+		cmd_room.ExecuteNonQuery();
 		con.Close();
 	}
 

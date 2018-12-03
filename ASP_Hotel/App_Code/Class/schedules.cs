@@ -32,7 +32,7 @@ public class schedules
 		get
 		{
 			if (this.schedule_status == true)
-				return "Đã đi";
+				return "Đã trả phòng";
 			else
 				return "Đang ở";
 		}
