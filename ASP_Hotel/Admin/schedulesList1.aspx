@@ -4,6 +4,7 @@
 	Danh sách đặt phòng đã trả phòng
 </asp:Content>
 <asp:Content ID="contentTable" ContentPlaceHolderID="contentTable" Runat="Server">
+	<h2>Danh sách đặt phòng đã trả phòng</h2>
 	<asp:Button ID="btnSchedules1" class="float-right btn btn-primary marL15" runat="server" Text="DS đặt phòng đã trả" PostBackUrl="~/Admin/schedulesList1.aspx" />
 	<asp:Button ID="btnSchedules0" class="float-right btn btn-success " runat="server" Text="DS đặt phòng" PostBackUrl="~/Admin/schedulesList.aspx" />
 	<br />

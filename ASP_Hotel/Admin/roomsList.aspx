@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageAdmin.master" AutoEventWireup="true" CodeFile="roomsList.aspx.cs" Inherits="Admin_rooms" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-	Quản lý các phòng
+	Quản lý phòng
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
-	<h2>Quản lý các phòng</h2>
+	<h2>Quản lý phòng</h2>
 	<asp:GridView class="table table-bordered" ID="grvDSDatPhong" runat="server" AutoGenerateColumns="False"> 
 		<Columns>
 			<asp:BoundField DataField="room_id" HeaderText="Mã phòng" />

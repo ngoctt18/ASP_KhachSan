@@ -4,6 +4,7 @@
 	Danh sách hóa đơn
 </asp:Content>
 <asp:Content ID="tableTable" ContentPlaceHolderID="contentTable" Runat="Server">
+	<h2>Danh sách hóa đơn</h2>
 	<asp:Button ID="btnBills1" class="float-right btn btn-primary marL15" runat="server" Text="DS hóa đơn đã thanh toán" PostBackUrl="~/Admin/billsList1.aspx" />
 	<asp:Button ID="btnBills0" class="float-right btn btn-success " runat="server" Text="DS hóa đơn" PostBackUrl="~/Admin/billsList.aspx" />
 	<br />
@@ -20,7 +21,7 @@
 			<%--<asp:BoundField DataField="getBill_status" HeaderText="Trạng thái" />--%>
 			<asp:TemplateField HeaderText="Thanh toán">
 				<ItemTemplate>
-					<asp:Button ID="ThanhToan" class="btn btn-primary" CommandName="ThanhToan" CommandArgument='<%#Bind("bill_id") %>'
+					<asp:Button ID="ThanhToan" class="btn btn-info" CommandName="ThanhToan" CommandArgument='<%#Bind("bill_id") %>'
 						OnCommand="ThanhToan_Click" runat="server" Text="Thanh toán" 
 						OnClientClick="return confirm('Bạn có muốn thanh toán hóa đơn này?')" />
 				</ItemTemplate>
