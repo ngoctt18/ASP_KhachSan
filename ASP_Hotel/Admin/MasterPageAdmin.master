@@ -19,6 +19,13 @@
   <style>
 	.ddlAdd {width: 28%;height: 35px;}
 	.marL15 {margin-left: 15px;}
+	.marT10 {margin-top: 10px;}
+	.tdStatus td:last-child {
+		font-style: italic;
+		font-weight: bold;
+		color: green;
+		background: #0080002e;
+	}
   </style>
 
 </head>

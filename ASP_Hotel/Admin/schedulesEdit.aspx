@@ -4,6 +4,7 @@
 	Cập nhật thông tin đặt phòng
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
+	<h2>Cập nhật thông tin đặt phòng</h2>
 	<asp:Table ID="tableThemSV" runat="server" class="table table-bordered">
       <asp:TableRow>
          <asp:TableCell>Mã đặt phòng: </asp:TableCell>

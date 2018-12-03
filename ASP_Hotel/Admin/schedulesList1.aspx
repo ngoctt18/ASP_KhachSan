@@ -4,11 +4,11 @@
 	Danh sách đặt phòng đã trả phòng
 </asp:Content>
 <asp:Content ID="contentTable" ContentPlaceHolderID="contentTable" Runat="Server">
-	<asp:Button ID="btnSchedules1" class="float-right btn btn-success marL15" runat="server" Text="DS đặt phòng đã trả" PostBackUrl="~/Admin/schedulesList1.aspx" />
+	<asp:Button ID="btnSchedules1" class="float-right btn btn-primary marL15" runat="server" Text="DS đặt phòng đã trả" PostBackUrl="~/Admin/schedulesList1.aspx" />
 	<asp:Button ID="btnSchedules0" class="float-right btn btn-success " runat="server" Text="DS đặt phòng" PostBackUrl="~/Admin/schedulesList.aspx" />
 	<br />
 	<br />		
-	<asp:GridView class="table table-bordered" ID="grvSchedules" runat="server" AutoGenerateColumns="False"> 
+	<asp:GridView class="table table-bordered tdStatus" ID="grvSchedules" runat="server" AutoGenerateColumns="False"> 
 		<Columns>
 			<asp:BoundField DataField="schedule_id" HeaderText="Mã đặt phòng" />
 			<asp:BoundField DataField="fullname" HeaderText="Họ và tên" />

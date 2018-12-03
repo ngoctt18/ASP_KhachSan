@@ -39,4 +39,6 @@ public class bills
 				this.bill_status = false;
 		}
 	}
+	public string fullname { get; set; }
+	public string phone { get; set; }
 }

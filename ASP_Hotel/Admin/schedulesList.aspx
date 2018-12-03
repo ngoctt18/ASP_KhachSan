@@ -4,7 +4,7 @@
 	Danh sách đặt phòng
 </asp:Content>
 <asp:Content ID="contentTable" ContentPlaceHolderID="contentTable" Runat="Server">
-		<asp:Button ID="btnSchedules1" class="float-right btn btn-success marL15" runat="server" Text="DS đặt phòng đã trả" PostBackUrl="~/Admin/schedulesList1.aspx" />
+		<asp:Button ID="btnSchedules1" class="float-right btn btn-primary marL15" runat="server" Text="DS đặt phòng đã trả" PostBackUrl="~/Admin/schedulesList1.aspx" />
 		<asp:Button ID="btnSchedules0" class="float-right btn btn-success " runat="server" Text="DS đặt phòng" PostBackUrl="~/Admin/schedulesList.aspx" />
 		<br />
 		<br />	
@@ -24,7 +24,7 @@
 						OnCommand="Xoa_Click" runat="server" Text="Xóa" 
 						OnClientClick="return confirm('Bạn có chắc muốn xóa đặt phòng này?')" />
 				
-					<asp:Button ID="sua" class="btn btn-info" CommandName="sua" CommandArgument='<%#Bind("schedule_id") %>'
+					<asp:Button ID="sua" class="btn btn-info marT10" CommandName="sua" CommandArgument='<%#Bind("schedule_id") %>'
 						OnCommand="Sua_Click" runat="server" Text="Sửa"/>
 				</ItemTemplate>
 			</asp:TemplateField>

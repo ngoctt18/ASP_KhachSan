@@ -4,14 +4,15 @@
 	Danh sách hóa đơn đã thanh toán
 </asp:Content>
 <asp:Content ID="tableTable" ContentPlaceHolderID="contentTable" Runat="Server">
-	<asp:Button ID="btnBills1" class="float-right btn btn-success marL15" runat="server" Text="DS hóa đơn đã thanh toán" PostBackUrl="~/Admin/billsList1.aspx" />
+	<asp:Button ID="btnBills1" class="float-right btn btn-primary marL15" runat="server" Text="DS hóa đơn đã thanh toán" PostBackUrl="~/Admin/billsList1.aspx" />
 	<asp:Button ID="btnBills0" class="float-right btn btn-success " runat="server" Text="DS hóa đơn" PostBackUrl="~/Admin/billsList.aspx" />
 	<br />
 	<br />		
-	<asp:GridView class="table table-bordered" ID="grvDSHoaDon" runat="server" AutoGenerateColumns="False"> 
+	<asp:GridView class="table table-bordered tdStatus" ID="grvDSHoaDon" runat="server" AutoGenerateColumns="False"> 
 		<Columns>
-			<asp:BoundField DataField="bill_id" HeaderText="Mã hóa đơn" />
-			<asp:BoundField DataField="schedule_id" HeaderText="Mã đặt phòng" />
+			<asp:BoundField DataField="bill_id" HeaderText="Mã HĐ" />
+			<asp:BoundField DataField="fullname" HeaderText="Tên KH" />
+			<asp:BoundField DataField="phone" HeaderText="Điện thoại" />
 			<asp:BoundField DataField="num_day" HeaderText="Số ngày thuê" />
 			<asp:BoundField DataField="price_room" HeaderText="Tiền phòng" />
 			<asp:BoundField DataField="price_service" HeaderText="Tiền dịch vụ" />

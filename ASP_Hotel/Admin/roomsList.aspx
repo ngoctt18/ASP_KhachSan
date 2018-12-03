@@ -4,6 +4,7 @@
 	Quản lý các phòng
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
+	<h2>Quản lý các phòng</h2>
 	<asp:GridView class="table table-bordered" ID="grvDSDatPhong" runat="server" AutoGenerateColumns="False"> 
 		<Columns>
 			<asp:BoundField DataField="room_id" HeaderText="Mã phòng" />

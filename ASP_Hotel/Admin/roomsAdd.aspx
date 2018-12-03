@@ -4,6 +4,7 @@
 	Thêm phòng
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
+	<h2>Thêm phòng</h2>
 <asp:Table ID="tableThemSV" runat="server" class="table table-bordered">
    <asp:TableRow>
       <asp:TableCell>Tên phòng: </asp:TableCell>

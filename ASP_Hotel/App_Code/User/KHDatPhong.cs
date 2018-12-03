@@ -208,7 +208,7 @@ public class KHDatPhong
 	public List<bills> getBills()
 	{
 		List<bills> li = new List<bills>();
-		string sql = "Select * From bills where bill_status=0 ORDER BY bill_id DESC";
+		string sql = "Select * From bills, schedules where bills.schedule_id=schedules.schedule_id AND bill_status=0 ORDER BY bill_id DESC";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -222,6 +222,7 @@ public class KHDatPhong
 			bill.price_service = Convert.ToInt32(rd["price_service"]);
 			bill.total_price = Convert.ToInt32(rd["total_price"]);
 			bill.bill_status = (Boolean)rd["bill_status"];
+			bill.fullname = (string)rd["fullname"];
 			li.Add(bill);
 		}
 		con.Close();
@@ -232,7 +233,7 @@ public class KHDatPhong
 	public List<bills> getBills1()
 	{
 		List<bills> li = new List<bills>();
-		string sql = "Select * From bills where bill_status=1 ORDER BY bill_id DESC";
+		string sql = "Select * From bills, schedules where bills.schedule_id=schedules.schedule_id AND bill_status=1 ORDER BY bill_id DESC";
 		con.Open();
 		SqlCommand cmd = new SqlCommand(sql, con);
 		SqlDataReader rd = cmd.ExecuteReader();
@@ -246,6 +247,8 @@ public class KHDatPhong
 			bill.price_service = Convert.ToInt32(rd["price_service"]);
 			bill.total_price = Convert.ToInt32(rd["total_price"]);
 			bill.bill_status = (Boolean)rd["bill_status"];
+			bill.fullname = (string)rd["fullname"];
+			bill.phone = (string)rd["phone"];
 			li.Add(bill);
 		}
 		con.Close();
@@ -327,10 +330,17 @@ public class KHDatPhong
 	public void deleteSchedue(int schedule_id)
 	{
 		con.Open();
+		// Cập nhật room_status là 0 (Phòng trống)
+		string sql_room = "update rooms set room_status=0 where room_id=(select schedules.room_id From schedules, rooms where schedules.room_id=rooms.room_id and schedules.schedule_id=@schedule_id)";
+		SqlCommand cmd_room = new SqlCommand(sql_room, con);
+		cmd_room.Parameters.AddWithValue("schedule_id", schedule_id);
+		cmd_room.ExecuteNonQuery();
+
 		string sql = "Delete From schedules Where schedule_id=@schedule_id";
 		SqlCommand cmd = new SqlCommand(sql, con);
 		cmd.Parameters.AddWithValue("schedule_id", schedule_id);
 		cmd.ExecuteNonQuery();
+
 		con.Close();
 	}
 

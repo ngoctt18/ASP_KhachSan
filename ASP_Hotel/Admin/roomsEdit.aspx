@@ -3,6 +3,7 @@
    Cập nhật thông tin phòng
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
+	<h2>Cập nhật thông tin phòng</h2>
    <asp:Table ID="tableThemSV" runat="server" class="table table-bordered">
       <asp:TableRow>
          <asp:TableCell>Mã phòng: </asp:TableCell>
@@ -34,7 +35,7 @@
    <asp:TableRow>
       <asp:TableCell></asp:TableCell>
       <asp:TableCell>
-		  <asp:Button ID="btnSuaPhong" class="btn btb-success" runat="server" Text="Cập nhật" OnClick="btnSuaPhong_Click" />
+		  <asp:Button ID="btnSuaPhong" class="btn btn-success" runat="server" Text="Cập nhật" OnClick="btnSuaPhong_Click" />
       </asp:TableCell>
    </asp:TableRow>
    </asp:Table>
