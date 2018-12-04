@@ -98,12 +98,14 @@ public class OrderServices
         con.Close();
     }
 
-    //cap nhat gia dich vu trong hoa don
-    public void updateService_price(int bill_id)
-    {
-        con.Open();
-        SqlCommand cmd = new SqlCommand("update bills set price_service=(select sum(order_price) as price_check from orders where bill_id="+bill_id+") where bill_id="+bill_id+"", con);
-        cmd.ExecuteNonQuery();
-        con.Close();
-    }
+	//cap nhat gia dich vu va tong gia hoa don trong hoa don
+	public void updateService_price(int bill_id)
+	{
+		con.Open();
+		SqlCommand cmd = new SqlCommand("update bills set price_service=(select sum(order_price) as price_check from orders where bill_id=" + bill_id + ") where bill_id=" + bill_id + "", con);
+		cmd.ExecuteNonQuery();
+		SqlCommand cmd2 = new SqlCommand("update bills set total_price=(select sum(price_service+price_room) as price_check2 from bills where bill_id=" + bill_id + ") where bill_id="+bill_id+"", con);
+		cmd2.ExecuteNonQuery();
+		con.Close();
+	}
 }

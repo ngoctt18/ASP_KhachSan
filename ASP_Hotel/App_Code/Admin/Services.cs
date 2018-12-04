@@ -22,7 +22,7 @@ public class Services
     {
         List<services> li = new List<services>();
         con.Open();
-        SqlCommand cmd = new SqlCommand("select * from services,categories", con);
+        SqlCommand cmd = new SqlCommand("select * from services", con);
         SqlDataReader rd = cmd.ExecuteReader();
         while (rd.Read())
         {
@@ -30,7 +30,6 @@ public class Services
             svc.service_id = (int)rd["service_id"];
             svc.service_name = (string)rd["service_name"];
             svc.price = (double)rd["price"];
-            svc.cat_name = (string)rd["cat_name"];
             svc.service_description = (string)rd["service_description"];
             li.Add(svc);
         }

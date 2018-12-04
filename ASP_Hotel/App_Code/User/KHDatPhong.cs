@@ -218,9 +218,9 @@ public class KHDatPhong
 			bill.bill_id = (int)rd["bill_id"];
 			bill.schedule_id = (int)rd["schedule_id"];
 			bill.num_day = (int)rd["num_day"];
-			bill.price_room = Convert.ToInt32(rd["price_room"]);
-			bill.price_service = Convert.ToInt32(rd["price_service"]);
-			bill.total_price = Convert.ToInt32(rd["total_price"]);
+			bill.price_room = Convert.ToDouble(rd["price_room"]);
+			bill.price_service = Convert.ToDouble(rd["price_service"]);
+			bill.total_price = Convert.ToDouble(rd["total_price"]);
 			bill.bill_status = (Boolean)rd["bill_status"];
 			bill.fullname = (string)rd["fullname"];
 			li.Add(bill);
