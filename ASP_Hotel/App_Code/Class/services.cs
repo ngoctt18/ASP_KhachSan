@@ -16,7 +16,8 @@ public class services
 	}
 	public int service_id { get; set; }
 	public string service_name { get; set; }
-	public float price { get; set; }
+	public double price { get; set; }
 	public int cat_id { get; set; }
 	public string service_description { get; set; }
+    public string cat_name { get; set; }
 }

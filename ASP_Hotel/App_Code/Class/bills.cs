@@ -18,8 +18,8 @@ public class bills
 	public int schedule_id { get; set; }
 	public int num_day { get; set; }
 	public float price_room { get; set; }
-	public float price_service { get; set; }
-	public float total_price { get; set; }
+	public double price_service { get; set; }
+	public double total_price { get; set; }
 	public Boolean bill_status { get; set; }
 
 	public string getBill_status

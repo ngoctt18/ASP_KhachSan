@@ -19,6 +19,13 @@ public class orders
 	public int schedule_id { get; set; }
 	public int service_id { get; set; }
 	public int quantity { get; set; }
-	public float order_price { get; set; }
+	public double order_price { get; set; }
 	public int bill_id { get; set; }
+    public string fullname { get; set; }
+    public string room_name { get; set; }
+    public string service_name { get; set; }
+    public double price { get; set; }
+    public int room_id { get; set; }
+    public string cat_name { get; set; }
+    public int cat_id { get; set; }
 }
