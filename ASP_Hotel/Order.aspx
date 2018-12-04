@@ -37,28 +37,26 @@
                <div class="logo">
                   <h1><a href="Order.aspx"><span>Đặt dịch vụ</span></a></h1>
                </div>
-				<!-- navigation -->
-		<div class="top-left">
-			<div class="top-nav">
-				<nav class="navbar navbar-default">
-					<!-- navbar-header -->
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						 <nav class="linkEffects linkHoverEffect_2">
-							<ul>
-								<li><a href="index.aspx" data-link-alt="Home" class="active"><span>Trang chủ</span></a></li> 
-								<li><a href="Order.aspx" data-link-alt="Service" class="scroll"><span>Dịch vụ</span></a></li> 
-								<li><a href="Admin/roomsList.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li> 
-							</ul>
-						</nav>
-						
-					</div>
-				</nav>
-					<div class="clearfix"> </div>	
-				</div>
-
-			</div>
-			<div class="clearfix"> </div>	
-			<!-- //navigation -->
+               <!-- navigation -->
+               <div class="top-left">
+                  <div class="top-nav">
+                     <nav class="navbar navbar-default">
+                        <!-- navbar-header -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                           <nav class="linkEffects linkHoverEffect_2">
+                              <ul>
+                                 <li><a href="index.aspx" data-link-alt="Home" class="active"><span>Trang chủ</span></a></li>
+                                 <li><a href="Order.aspx" data-link-alt="Service" class="scroll"><span>Dịch vụ</span></a></li>
+                                 <li><a href="Admin/roomsList.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </nav>
+                     <div class="clearfix"> </div>
+                  </div>
+               </div>
+               <div class="clearfix"> </div>
+               <!-- //navigation -->
             </div>
          </div>
          <!--Slider-->
@@ -103,7 +101,7 @@
                      <asp:DropDownList ID="drppickcategory" required="" runat="server" OnSelectedIndexChanged="drppickcategory_SelectedIndexChanged">
                      </asp:DropDownList>
                   </div>
-               </div>--%>
+                  </div>--%>
                <div class="agileits_main_grid w3_agileits_main_grid">
                   <div class="wthree_grid">
                      <h5>Chọn dịch vụ</h5>
@@ -111,7 +109,6 @@
                      </asp:DropDownList>
                   </div>
                </div>
-               
                <div class="agileits_w3layouts_main_grid w3ls_main_grid">
                   <div class="agileinfo_grid">
                      <h5>Số lượng</h5>
@@ -121,7 +118,6 @@
                      <div class="clearfix"> </div>
                   </div>
                </div>
-               
                <div class="w3_main_grid">
                   <asp:Label ID="err_msg" runat="server" />
                   <div class="w3_main_grid_right">
