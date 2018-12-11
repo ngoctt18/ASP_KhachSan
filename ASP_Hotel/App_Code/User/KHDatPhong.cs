@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Threading;
+using System.Timers;
 
 /// <summary>
 /// Summary description for KHDatPhong
@@ -15,6 +17,7 @@ public class KHDatPhong
 	{
 		string strConnect = @"Data Source=.\sqlexpress;Initial Catalog=qlkhachsan;Integrated Security=True";
 		con = new SqlConnection(strConnect);
+		CreatingNewThreadTimer();
 	}
 
 	// Get ra danh sách các phòng trống từ bảng rooms
@@ -382,6 +385,42 @@ public class KHDatPhong
 		cmd.Parameters.AddWithValue("date_in", schedule.date_in);
 		cmd.Parameters.AddWithValue("date_out", schedule.date_out);
 		cmd.ExecuteNonQuery();
+		con.Close();
+	}
+
+	// Tự động cập nhật trạng thái phòng là trống sau khi đặt phòng hết hạn
+	public void CreatingNewThreadTimer()
+	{
+		Thread thread = new Thread(new ThreadStart(MyTimer));
+		thread.Start();
+	}
+	public void MyTimer()
+	{
+		DateTime time;
+		while (true)
+		{
+			time = DateTime.Now;
+			int hour = time.Hour;
+			int minute = time.Minute;
+			int second = time.Second;
+			// Tự động chạy hàm kiểm tra date_out để set room_status=0 (phòng trống)
+			if (hour == 21 && minute == 21 && second == 21)
+			{
+				testMethod();
+			}
+		}
+	}
+	public void testMethod()
+	{
+		con.Close();
+		con.Open();
+		DateTime today = DateTime.Today;
+		// Cập nhật room_status là 0 (Phòng trống) của room_id trong schedules khi day_out bằng today
+		string update_room = "update rooms set room_status=0 where room_id IN (select room_id from schedules where schedule_status=0 and date_out=@today)";
+		SqlCommand cmd_room = new SqlCommand(update_room, con);
+		cmd_room.Parameters.AddWithValue("today", today);
+		cmd_room.ExecuteNonQuery();
+		System.Diagnostics.Debug.WriteLine(today);
 		con.Close();
 	}
 }

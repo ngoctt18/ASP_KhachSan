@@ -45,8 +45,8 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                            <nav class="linkEffects linkHoverEffect_2">
                               <ul>
-                                 <li><a href="index.aspx" data-link-alt="Home" class="active"><span>Trang chủ</span></a></li>
-                                 <li><a href="Order.aspx" data-link-alt="Service" class="scroll"><span>Dịch vụ</span></a></li>
+                                 <li><a href="index.aspx" data-link-alt="Home" class="scroll"><span>Trang chủ</span></a></li>
+                                 <li><a href="Order.aspx" data-link-alt="Service" class="active"><span>Dịch vụ</span></a></li>
                                  <li><a href="Admin/roomsList.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li>
                               </ul>
                            </nav>
@@ -113,7 +113,7 @@
                   <div class="agileinfo_grid">
                      <h5>Số lượng</h5>
                      <div class="agileits_w3layouts_main_gridl">
-                        <asp:TextBox ID="txtpickquantity" runat="server" placeholder="1" required="" />
+                        <asp:TextBox ID="txtpickquantity" runat="server" required="" />
                      </div>
                      <div class="clearfix"> </div>
                   </div>
