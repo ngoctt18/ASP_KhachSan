@@ -140,7 +140,7 @@
                <div class="w3_main_grid">
                   <asp:Label ID="err_msg" runat="server" />
                   <div class="w3_main_grid_right">
-                     <asp:Button ID="btn_BookRoom" runat="server" Text="Đặt ngay" OnClick="btn_BookRoom_Click" />
+                     <asp:Button ID="btn_BookRoom" runat="server" Text="Đặt ngay" OnClick="btn_BookRoom_Click" OnClientClick="return confirm('Bạn có chắc chắn muốn đặt phòng?')" />
                   </div>
                   <div class="clearfix"> </div>
                </div>

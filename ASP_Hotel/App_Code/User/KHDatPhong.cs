@@ -17,7 +17,8 @@ public class KHDatPhong
 	{
 		string strConnect = @"Data Source=.\sqlexpress;Initial Catalog=qlkhachsan;Integrated Security=True";
 		con = new SqlConnection(strConnect);
-		CreatingNewThreadTimer();
+		// Hàm l gây lag project
+		// CreatingNewThreadTimer();
 	}
 
 	// Get ra danh sách các phòng trống từ bảng rooms
@@ -406,11 +407,11 @@ public class KHDatPhong
 			// Tự động chạy hàm kiểm tra date_out để set room_status=0 (phòng trống)
 			if (hour == 21 && minute == 21 && second == 21)
 			{
-				testMethod();
+				autoUpdateRoomStatus();
 			}
 		}
 	}
-	public void testMethod()
+	public void autoUpdateRoomStatus()
 	{
 		con.Close();
 		con.Open();
@@ -420,7 +421,7 @@ public class KHDatPhong
 		SqlCommand cmd_room = new SqlCommand(update_room, con);
 		cmd_room.Parameters.AddWithValue("today", today);
 		cmd_room.ExecuteNonQuery();
-		System.Diagnostics.Debug.WriteLine(today);
+		// System.Diagnostics.Debug.WriteLine(today);
 		con.Close();
 	}
 }
