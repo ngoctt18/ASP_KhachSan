@@ -22,7 +22,7 @@
 <body id="page-top">
     <form id="form1" runat="server">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="navbar-brand mr-1" href="index.html">Admin Controlpanel</a>
+    <a class="navbar-brand mr-1" href="index.html">Danh sách nhân viên</a>
     <!-- Navbar Search -->
     <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
     </div>
