@@ -20,6 +20,8 @@
          height: 100%;
          }
          .footer-w3 {margin-top: 3px;}
+         . {font-family: verdana;}
+         h5 { font-family: verdana;}
       </style>
    </head>
    <body>
@@ -30,12 +32,36 @@
                <div class="banner-agile-top">
                   <div class="number">
                      <h3><i class="fa fa-phone" aria-hidden="true"></i> +84 975 853 528</h3>
+                     <div class="top-icons">
+                        <ul>
+                        </ul>
+                     </div>
                   </div>
                   <div class="clearfix"></div>
                </div>
                <div class="logo">
                   <h1><a href="index.aspx"><span>welcome hotel</span></a></h1>
                </div>
+               <!-- navigation -->
+               <div class="top-left">
+                  <div class="top-nav">
+                     <nav class="navbar navbar-default">
+                        <!-- navbar-header -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                           <nav class="linkEffects linkHoverEffect_2">
+                              <ul>
+                                 <li><a href="index.aspx" data-link-alt="Home" class="active"><span>Trang chủ</span></a></li>
+                                 <li><a href="Order.aspx" data-link-alt="Service" class="scroll"><span>Dịch vụ</span></a></li>
+                                 <li><a href="Admin/roomsList.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </nav>
+                     <div class="clearfix"> </div>
+                  </div>
+               </div>
+               <div class="clearfix"> </div>
+               <!-- //navigation -->
             </div>
          </div>
          <!--Slider-->
@@ -53,7 +79,7 @@
                   <li>
                      <div class="slider-info">
                         <h3>Welcome!</h3>
-                        <p style="color:#fff;">Khách sạn Welcome là khách sạn Quốc tế đầu tiên tại Hà Nội với 218 phòng nghỉ tiện nghi, hiện đại và sang trọng. Đặc biệt, với vị trí trung tâm thuận lợi kề bên Nhổn yên bình, khách sạn là điểm dừng chân lý tưởng của du khách trong và ngoài nước mỗi khi có chuyến công tác hay du lịch cùng bạn bè và người thân.</p>
+                        <p style="color:#fff; font-size: 18px;">Khách sạn Welcome là khách sạn Quốc tế đầu tiên tại Hà Nội với 218 phòng nghỉ tiện nghi, hiện đại và sang trọng. Đặc biệt, với vị trí trung tâm thuận lợi kề bên Nhổn yên bình, khách sạn là điểm dừng chân lý tưởng của du khách trong và ngoài nước mỗi khi có chuyến công tác hay du lịch cùng bạn bè và người thân.</p>
                      </div>
                   </li>
                </ul>
@@ -95,7 +121,7 @@
                </div>
                <div class="agileits_w3layouts_main_grid w3ls_main_grid">
                   <div class="agileinfo_grid">
-                     <h5>Ngày & giờ nhận phòng *</h5>
+                     <h5>Ngày nhận phòng *</h5>
                      <div class="agileits_w3layouts_main_gridl">
                         <asp:TextBox ID="txtDateIn" runat="server" type="date" required=""></asp:TextBox>
                      </div>
@@ -104,7 +130,7 @@
                </div>
                <div class="agileits_w3layouts_main_grid w3ls_main_grid">
                   <div class="agileinfo_grid">
-                     <h5>Ngày & giờ trả phòng *</h5>
+                     <h5>Ngày trả phòng *</h5>
                      <div class="agileits_w3layouts_main_gridl">
                         <asp:TextBox ID="txtDateOut" runat="server" type="date" required=""></asp:TextBox>
                      </div>
@@ -114,13 +140,45 @@
                <div class="w3_main_grid">
                   <asp:Label ID="err_msg" runat="server" />
                   <div class="w3_main_grid_right">
-                     <asp:Button ID="btn_BookRoom" runat="server" Text="Đặt ngay" OnClick="btn_BookRoom_Click" />
+                     <asp:Button ID="btn_BookRoom" runat="server" Text="Đặt ngay" OnClick="btn_BookRoom_Click" OnClientClick="return confirm('Bạn có chắc chắn muốn đặt phòng?')" />
                   </div>
                   <div class="clearfix"> </div>
                </div>
             </div>
          </div>
          <!-- //header -->
+         <!-- /services -->
+         <div class="services" id="services">
+            <div class="container">
+               <div class="services-agile-head">
+                  <h3>Dịch vụ</h3>
+               </div>
+               <div class="w3-agile-grids">
+                  <div class="col-md-6 w3-agile-services-left">
+                     <div class="w3-services-text">
+                        <ul class="services-head">
+                           <li>
+                              <h3>10</h3>
+                           </li>
+                           <li>
+                              <h5>tuần</h5>
+                           </li>
+                           <li>
+                              <h5>kinh nghiệm</h5>
+                           </li>
+                        </ul>
+                        <p style="font-size: 15px;padding-right:15px;">Khách sạn Hà Nội là khách sạn Quốc tế đầu tiên tại Hà Nội với 218 phòng nghỉ tiện nghi, hiện đại và sang trọng. Đặc biệt, với vị trí trung tâm thuận lợi kề bên Hồ Giảng Võ yên bình, khách sạn là điểm dừng chân lý tưởng của du khách trong và ngoài nước mỗi khi có chuyến công tác hay du lịch cùng bạn bè và người thân..</p>
+                        <p style="font-size: 15px;padding-right:15px;">Hơn nữa, Khách sạn Hà Nội đã được nổi danh là địa chỉ đứng đầu của Hà nội về ẩm thực Trung Hoa cùng các dịch vụ giải trí hoàn hảo và phong phú. Đến với Khách sạn Hà Nội, chúng tôi hy vọng sẽ đem lại cho quý khách những trải nghiệm thú vị và hài lòng nhất.</p>
+                     </div>
+                  </div>
+                  <div class="col-md-6 w3-agile-services-right">
+                     <img src="assets/images/ab1.jpg" alt="services">
+                  </div>
+                  <div class="clearfix"></div>
+               </div>
+            </div>
+         </div>
+         <!-- //services-->
          <!--footer-->
          <div class="footer-w3">
             <p>&copy; 2018 Website Hotel | ASP.NET</p>

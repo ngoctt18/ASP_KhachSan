@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_rooms : System.Web.UI.Page
+public partial class Admin_schedulesList1 : System.Web.UI.Page
 {
 	KHDatPhong data = new KHDatPhong();
 	protected void Page_Load(object sender, EventArgs e)
@@ -16,7 +16,7 @@ public partial class Admin_rooms : System.Web.UI.Page
 
 	private void DanhSachDatPhong()
 	{
-		grvDSDatPhong.DataSource = data.getRooms();
+		grvSchedules.DataSource = data.getSchedules1();
 		DataBind();
 	}
 }
