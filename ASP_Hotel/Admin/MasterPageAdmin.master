@@ -34,7 +34,11 @@
     <form id="form1" runat="server">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <a class="navbar-brand mr-1" href="index.html">Danh sách nhân viên</a>
+=======
+    <a class="navbar-brand mr-1" href="roomsList.aspx">Admin Controlpanel</a>
+>>>>>>> 86a330c41dd530ceb8c93edcfcf0418d781f8e52
 =======
     <a class="navbar-brand mr-1" href="roomsList.aspx">Admin Controlpanel</a>
 >>>>>>> 86a330c41dd530ceb8c93edcfcf0418d781f8e52
