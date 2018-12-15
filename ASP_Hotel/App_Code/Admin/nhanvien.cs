@@ -11,7 +11,7 @@ public class nhanvien
     SqlConnection con;
     public nhanvien()
     {
-        string strConnect = @"Data Source=DESKTOP-16M4UR1\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True";
+        string strConnect = @"Data Source=.\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True";
         con = new SqlConnection(strConnect);
     }
     public List<employees> employees()

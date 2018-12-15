@@ -18,7 +18,7 @@ public partial class Admin_Dangnhap : System.Web.UI.Page
     {
        
         SqlConnection con = new SqlConnection();
-        con.ConnectionString = @"Data Source=DESKTOP-16M4UR1\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True";
+        con.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True";
 
 
         Int32 verify;
