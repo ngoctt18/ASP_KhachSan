@@ -94,6 +94,21 @@
                   <i class="fas fa-fw fa-table"></i>
                   <span>Quản lý nhân viên</span></a>
                </li>
+                 <li class="nav-item active">
+                  <a class="nav-link" href="news_categoriesList.aspx">
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Quản lý danh mục tin tức</span></a>
+               </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="newsList.aspx">
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Quản lý tin tức</span></a>
+               </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="AdminsList.aspx">
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Quản lý Admin</span></a>
+               </li>
             </ul>
             <div id="content-wrapper">
                <div class="container-fluid">

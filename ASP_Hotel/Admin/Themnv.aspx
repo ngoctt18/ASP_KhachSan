@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h2>THem Nhan Vien Moi</h2>
+            <h2>Them Nhan Vien Moi</h2>
              <asp:Table runat="server" ID="t1">
                     <asp:TableRow>
                     <asp:TableCell> phone</asp:TableCell>

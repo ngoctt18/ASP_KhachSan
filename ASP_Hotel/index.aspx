@@ -53,6 +53,7 @@
                                  <li><a href="index.aspx" data-link-alt="Home" class="active"><span>Trang chủ</span></a></li>
                                  <li><a href="Order.aspx" data-link-alt="Service" class="scroll"><span>Dịch vụ</span></a></li>
                                  <li><a href="Admin/roomsList.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li>
+                                 <li><a href="Admin/newsList.aspx" data-link-alt="News" class="scroll"><span>Tin tức</span></a></li>
                               </ul>
                            </nav>
                         </div>
