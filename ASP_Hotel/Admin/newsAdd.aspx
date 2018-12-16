@@ -30,7 +30,8 @@
     <asp:TableRow>
       <asp:TableCell>Ảnh: </asp:TableCell>
       <asp:TableCell>
-         <asp:TextBox ID="news_avatar" runat="server" required="" />
+         <%--<asp:TextBox ID="news_avatar" runat="server" required="" />--%>
+         <asp:FileUpload ID="FileUpload1" runat="server" Width="220px" Height="27px" />
       </asp:TableCell>
    </asp:TableRow>
 

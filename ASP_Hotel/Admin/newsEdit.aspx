@@ -9,7 +9,7 @@
      <asp:TableRow>
       <asp:TableCell>Mã tin: </asp:TableCell>
       <asp:TableCell>
-         <asp:TextBox ID="news_id" runat="server" required="" />
+         <asp:TextBox Enabled="false"  ID="news_id" runat="server" required="" />
       </asp:TableCell>
    </asp:TableRow>
 
@@ -37,7 +37,9 @@
     <asp:TableRow>
       <asp:TableCell>Ảnh: </asp:TableCell>
       <asp:TableCell>
-         <asp:TextBox ID="news_avatar" runat="server" required="" />
+         <%--<asp:TextBox ID="news_avatar" runat="server" required="" />--%>
+          <asp:Image ID="news_avatar"  runat="server" ImageUrl="" />
+          <asp:FileUpload ID="FileUpload1" runat="server" Width="348px" Height="27px" />
       </asp:TableCell>
    </asp:TableRow>
 
@@ -45,8 +47,8 @@
       <asp:TableCell>Trạng thái: </asp:TableCell>
       <asp:TableCell>
 		  <asp:DropDownList ID="news_status" class="ddlAdd" runat="server" AppendDataBoundItems="true" >
-			  <asp:ListItem Value="False" Text="Đã ẩn"></asp:ListItem>
-			  <asp:ListItem Value="True" Text="Đã đăng"></asp:ListItem>
+			  <asp:ListItem Value="False" Text="Ẩn tin"></asp:ListItem>
+			  <asp:ListItem Value="True" Text="Hiện tin"></asp:ListItem>
 		  </asp:DropDownList>
       </asp:TableCell>
    </asp:TableRow>
@@ -66,6 +68,5 @@
 </asp:Table>
 <br />
 <asp:Label ID="err_msg" class="alert alert-success" runat="server" ForeColor="Red" />
-	<p></p>
 </asp:Content>
 

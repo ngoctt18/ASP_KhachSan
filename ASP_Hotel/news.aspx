@@ -22,6 +22,9 @@
          .footer-w3 {margin-top: 3px;}
          . {font-family: verdana;}
          h5 { font-family: verdana;}
+         .portfolio-grids img {
+            max-width: 70%;
+        }
       </style>
    </head>
    <body>
@@ -92,28 +95,33 @@
          <div id="gallery" class="gallery">
             <div class="container">
                <div class="agileits-gal-title">
-                  <h3>Our gallery</h3>
+                  <h3>Our news</h3>
                </div>
                <div class="sap_tabs">
                   <div id="horizontalTab">
                      <div class="clearfix"> </div>
                      <div class="resp-tabs-container">
-                        <div class="tab-1">
-                           <div class="clearfix"></div>
-                           <div class="col-md-6 portfolio-grids offer-gal-images offer-gal-img2">
-                              <%--<div class="offer-gallery-img2">
-                              </div>--%>
-							   <%--Cho ảnh ở đây--%>
-                           </div>
-                           <div class="col-md-6 portfolio-grids">
-                              <div class="gallery-text-agile agile-offer1">
-                                 <h3>single Room</h3>
-                                 <p>Fresh local baby whiting fillets in a sesame and parsley crumb s/w chips salad lemon and tartare...</p>
-								  <p>ádasdasd</p>
-                              </div>
-                           </div>
-                           <div class="clearfix"></div>
-                        </div>
+                         <%
+                             var news = new DataUtil().getAllNews();
+                             foreach(var tin in news)
+                             {
+                                 Response.Write("<div class='tab-1'>");
+                                 Response.Write("<div class='clearfix'></div>");
+                                 Response.Write("<div class='col-md-6 portfolio-grids offer-gal-images offer-gal-img2'>");
+                                 Response.Write("<img src='Admin/images/"+tin.news_avatar+"' />");
+                                 Response.Write("</div>");
+                                 Response.Write("<div class='col-md-6 portfolio-grids'>");
+                                 Response.Write("<div class='gallery-text-agile agile-offer1'>");
+                                 Response.Write("<h3>"+tin.news_title+"</h3>");
+                                 Response.Write("<p>"+tin.news_description+"</p>");
+                                 Response.Write("<p>"+tin.news_content+"</p>");
+                                 Response.Write("</div>");
+                                 Response.Write(" </div>");
+                                 Response.Write(" <div class='clearfix'></div>");
+                                 Response.Write(" </div>");
+                             }
+                             %>
+                         
                      </div>
                   </div>
                </div>

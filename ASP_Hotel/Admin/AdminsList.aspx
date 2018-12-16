@@ -5,7 +5,7 @@
 </asp:Content> 
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
         <h2>Danh sách admin</h2>
-            <asp:GridView ID="grdDs" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="grdDs" runat="server" AutoGenerateColumns="false" class="table table-bordered" >
                 <Columns>
                     <asp:BoundField DataField="admin_id" HeaderText="Mã quản trị viên" />
                     <asp:BoundField DataField="phone" HeaderText="Số điện thoại" />
@@ -15,24 +15,9 @@
                     <%--<asp:BoundField DataField="avatar" HeaderText="Ảnh" />--%>
                     <asp:TemplateField runat="server" HeaderText="Ảnh">
                                     <ItemTemplate>
-                                        <asp:Image ID="img" runat="server" ImageUrl='<%# "~/Admin/images/"+Eval("avatar") %>' Width="80px" Height="80px"/>
+                                        <asp:Image ID="img" runat="server" ImageUrl='<%# "images/"+Eval("avatar") %>' Width="80px" Height="80px"/>
                                     </ItemTemplate>
                     </asp:TemplateField>
-                    
-                  <%--  <asp:TemplateField HeaderText="Xóa">
-                        <ItemTemplate>
-                            <asp:Button ID="xoa" CommandName="xoa"
-                                CommandArgument='<%# Bind("admin_id") %>' Text="xóa" OnCommand="Xoa_Click" runat="server"
-                                OnClientClick="return confirm('Bạn có chắc chắn muốn xóa?')" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="Sửa">
-                        <ItemTemplate>
-                            <asp:Button ID="sua" CommandName="sua" CommandArgument='<%# Bind("admin_id") %>' Text="sửa" 
-                                OnCommand="Sua_Click" runat="server" />
-                        </ItemTemplate>
-                    </asp:TemplateField>--%>
              <asp:TemplateField HeaderText="Chức năng">
 				<ItemTemplate>
 					<asp:Button ID="xoa" class="btn btn-danger" CommandName="xoa" CommandArgument='<%#Bind("admin_id") %>'

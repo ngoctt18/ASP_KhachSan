@@ -23,7 +23,16 @@ public partial class Admin_AdminsAdd : System.Web.UI.Page
             a.password = txtpassword.Text;
             a.email = txtemail.Text;
             a.address = txtaddress.Text;
-            a.avatar = txtavartar.Text;
+            //a.avatar = txtavartar.Text;
+
+            {
+                string fileName = "images/" + FileUpload3.FileName;
+                string filePath = MapPath(fileName);
+                FileUpload3.SaveAs(filePath);
+                a.avatar = FileUpload3.FileName;
+
+
+            }
             data.Themadmin(a);
             msg.ForeColor = System.Drawing.Color.Red;
             msg.Text = "Thêm thành công";

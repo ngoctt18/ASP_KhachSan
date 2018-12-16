@@ -29,9 +29,9 @@ public class news
         get
         {
             if (this.news_status == true)
-                return "Đã hiện tin";
+                return "Hiện tin";
             else
-                return "Đã ẩn tin";
+                return "Ẩn tin";
         }
         set
         {

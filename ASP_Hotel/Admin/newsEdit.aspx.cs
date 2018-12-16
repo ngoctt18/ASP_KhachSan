@@ -18,7 +18,10 @@ public partial class Admin_newsEdit : System.Web.UI.Page
             news_title.Text = n.news_title;
             news_description.Text = n.news_description;
             news_content.Text = n.news_content;
-            news_avatar.Text = n.news_avatar;
+            //news_avatar.Text = n.news_avatar;
+
+            string urlImg = "images/" +n.news_avatar;
+            news_avatar.ImageUrl = urlImg;
 
             news_cat_id.DataSource = data.getNewsCategories();
             news_cat_id.DataValueField = "news_cat_id";
@@ -40,7 +43,18 @@ public partial class Admin_newsEdit : System.Web.UI.Page
             n.news_title = news_title.Text;
             n.news_description = news_description.Text;
             n.news_content = news_content.Text;
-            n.news_avatar = news_avatar.Text;
+
+            //upload file ảnh
+            if (Page.IsValid && FileUpload1.HasFile)
+            {
+                string fileName = "images/" + FileUpload1.FileName;
+                string filePath = MapPath(fileName);
+                FileUpload1.SaveAs(filePath);
+                n.news_avatar = FileUpload1.FileName;
+
+
+            }
+
             n.news_status = Convert.ToBoolean(news_status.SelectedValue);
             n.news_cat_id = Convert.ToInt32(news_cat_id.SelectedValue);
 

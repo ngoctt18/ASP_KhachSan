@@ -18,11 +18,15 @@
          .marL15 {margin-left: 15px;}
          .marT10 {margin-top: 10px;}
          .tdStatus td:last-child {
-         font-style: italic;
-         font-weight: bold;
-         color: green;
-         background: #0080002e;
+             font-style: italic;
+             font-weight: bold;
+             color: green;
+             background: #0080002e;
          }
+         img#contentTable_avatar, #contentTable_news_avatar {
+            width: 150px;
+            margin: 10px;
+        }
       </style>
    </head>
    <body id="page-top">

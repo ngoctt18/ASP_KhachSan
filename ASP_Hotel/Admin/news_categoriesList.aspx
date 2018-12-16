@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
     <h2>Danh mục tin tức</h2>
-            <asp:GridView ID="grdDs" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="grdDs" runat="server" AutoGenerateColumns="false" class="table table-bordered" >
                 <Columns>
                     <asp:BoundField DataField="news_cat_id" HeaderText="Mã quản danh mục tin tức" />
                     <asp:BoundField DataField="news_cat_name" HeaderText="Tên danh mục" />

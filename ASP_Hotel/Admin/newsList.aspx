@@ -17,7 +17,7 @@
 			<asp:BoundField DataField="news_content" HeaderText="Nội dung tin" />
              <asp:TemplateField runat="server" HeaderText="Ảnh">
                                     <ItemTemplate>
-                                        <asp:Image ID="img" runat="server" ImageUrl='<%# "~/Admin/images/"+Eval("news_avatar") %>' Width="80px" Height="80px"/>
+                                        <asp:Image ID="img" runat="server" ImageUrl='<%# "images/"+Eval("news_avatar") %>' Width="80px" Height="80px"/>
                                     </ItemTemplate>
             </asp:TemplateField>
 			<%--<asp:BoundField DataField="news_avatar" HeaderText="Hình Ảnh Tin" />--%>

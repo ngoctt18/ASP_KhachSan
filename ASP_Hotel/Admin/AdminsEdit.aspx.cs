@@ -18,7 +18,8 @@ public partial class Admin_AdminsEdit : System.Web.UI.Page
             txtpassword.Text = a.password;
             txtemail.Text = a.email;
             txtaddress.Text = a.address;
-            txtavartar.Text = a.avatar;
+            string urlImg = "images/" + a.avatar;
+            avatar.ImageUrl = urlImg;
             DataBind();
         }
     }
@@ -33,10 +34,17 @@ public partial class Admin_AdminsEdit : System.Web.UI.Page
             a.password = txtpassword.Text;
             a.email = txtemail.Text;
             a.address = txtaddress.Text;
-            a.avatar = txtavartar.Text;
+
+            if (FileUpload3.HasFile)
+            { 
+            string fileName = "images/" + FileUpload3.FileName;
+                string filePath = MapPath(fileName);
+                FileUpload3.SaveAs(filePath);
+                a.avatar = FileUpload3.FileName;
+            }
             data.Capnhatadmin(a);
-            msg.Text = "Bạn cập nhật thành công.";
-        }
+        msg.Text = "Bạn cập nhật thành công.";
+    }
         catch (Exception ex)
         {
 

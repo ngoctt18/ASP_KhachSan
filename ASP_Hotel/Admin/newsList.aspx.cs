@@ -17,7 +17,7 @@ public partial class Admin_newsList : System.Web.UI.Page
 
     private void DanhSachDangtin()
     {
-        grvNews.DataSource = data.getNews1();
+        grvNews.DataSource = data.getNews();
         DataBind();
     }
 

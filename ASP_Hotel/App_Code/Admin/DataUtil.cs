@@ -6,7 +6,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 
 /// <summary>
-/// Summary description for KHDatPhong
+/// Summary description for DataUtil
 /// </summary>
 public class DataUtil
 {
@@ -97,16 +97,29 @@ public class DataUtil
     public void Capnhatadmin(admins a)
     {
         con.Open();
-        string strSql = "update admins set phone=@p,password=@pa,email=@e,address=@ad,avatar=@av where admin_id=@admin_id";
-        SqlCommand cmd = new SqlCommand(strSql, con);
-        cmd.Parameters.AddWithValue("p", a.phone);
-        cmd.Parameters.AddWithValue("pa", a.password);
-        cmd.Parameters.AddWithValue("e", a.email);
-        cmd.Parameters.AddWithValue("ad", a.address);
-        cmd.Parameters.AddWithValue("av", a.avatar);
-        cmd.Parameters.AddWithValue("admin_id", a.admin_id);
+        if (a.avatar != null)
+        {
+            string strSql = "update admins set phone=@p,password=@pa,email=@e,address=@ad,avatar=@av where admin_id=@admin_id";
+            SqlCommand cmd = new SqlCommand(strSql, con);
+            cmd.Parameters.AddWithValue("p", a.phone);
+            cmd.Parameters.AddWithValue("pa", a.password);
+            cmd.Parameters.AddWithValue("e", a.email);
+            cmd.Parameters.AddWithValue("ad", a.address);
+            cmd.Parameters.AddWithValue("av", a.avatar);
+            cmd.Parameters.AddWithValue("admin_id", a.admin_id);
+            cmd.ExecuteNonQuery();
+        } else
+        {
+            string strSql = "update admins set phone=@p,password=@pa,email=@e,address=@ad where admin_id=@admin_id";
+            SqlCommand cmd = new SqlCommand(strSql, con);
+            cmd.Parameters.AddWithValue("p", a.phone);
+            cmd.Parameters.AddWithValue("pa", a.password);
+            cmd.Parameters.AddWithValue("e", a.email);
+            cmd.Parameters.AddWithValue("ad", a.address);
+            cmd.Parameters.AddWithValue("admin_id", a.admin_id);
+            cmd.ExecuteNonQuery();
+        }
 
-        cmd.ExecuteNonQuery();
         con.Close();
     }
 
@@ -196,7 +209,7 @@ public class DataUtil
 
     //Phần Tin ---------------------------------------------------------------------------------------------
 
-    // Get ra danh sách tin đang hiện vs news_status=0
+    // Get ra danh sách tin ẩn và hiện
     public List<news> getNews()
     {
         string sql = "Select * From news, news_categories where news.news_cat_id=news_categories.news_cat_id ORDER BY news_id DESC";
@@ -222,8 +235,8 @@ public class DataUtil
         return li;
     }
 
-    // Get ra danh sách tin đang ẩn vs news_status=0
-    public List<news> getNews1()
+    //Lấy ra tin hiện
+    public List<news> getAllNews()
     {
         string sql = "Select * From news, news_categories where news.news_cat_id=news_categories.news_cat_id and news.news_status=1 ORDER BY news_id DESC";
         con.Open();
@@ -248,52 +261,6 @@ public class DataUtil
         return li;
     }
 
-    //// Get ra danh sách các phòng trống từ bảng rooms
-    //public List<news> getAnTin()
-    //{
-    //    List<news> li = new List<news>();
-    //    // Phòng có room_status = 0 là phòng trống chưa có người
-    //    string sql = "Select * From news where news_status = 0";
-    //    con.Open();
-    //    SqlCommand cmd = new SqlCommand(sql, con);
-    //    SqlDataReader rd = cmd.ExecuteReader();
-    //    while (rd.Read())
-    //    {
-    //        news room = new news();
-    //        room.news_id = (int)rd["room_id"];
-    //        room.news_title = (string)rd["room_name"];
-    //        room.news_description = (string)rd["news_description"];
-    //        room.news_content = (string)rd["news_content"];
-    //        room.news_avatar = (string)rd["news_avatar"];
-    //        room.news_cat_id = (int)rd["news_cat_id"];
-    //        room.news_status = (Boolean)rd["news_status"];
-    //        li.Add(room);
-    //    }
-    //    con.Close();
-    //    return li;
-    //}
-
-    //// Get danh sách tất cả các phòng 
-    //public List<rooms> getAllRooms()
-    //{
-    //    List<rooms> li = new List<rooms>();
-    //    string sql = "Select * From rooms, room_types where rooms.room_type_id=room_types.room_type_id ORDER BY room_id DESC";
-    //    con.Open();
-    //    SqlCommand cmd = new SqlCommand(sql, con);
-    //    SqlDataReader rd = cmd.ExecuteReader();
-    //    while (rd.Read())
-    //    {
-    //        rooms room = new rooms();
-    //        room.room_id = (int)rd["room_id"];
-    //        room.room_name = (string)rd["room_name"];
-    //        room.room_status = (Boolean)rd["room_status"];
-    //        room.room_type_name = (string)rd["room_type_name"];
-    //        li.Add(room);
-    //    }
-    //    con.Close();
-    //    return li;
-    //}
-
     // Thêm 1 Tin
     public int ThemTin(news n)
     {
@@ -316,12 +283,6 @@ public class DataUtil
     public void deleteNew(int news_id)
     {
         con.Open();
-        // Cập nhật room_status là 0 (Phòng trống)
-        //string sql_room = "update news_categories set room_status=0 where room_id=(select schedules.room_id From schedules, rooms where schedules.room_id=rooms.room_id and schedules.schedule_id=@schedule_id)";
-        //SqlCommand cmd_room = new SqlCommand(sql_room, con);
-        //cmd_room.Parameters.AddWithValue("schedule_id", schedule_id);
-        //cmd_room.ExecuteNonQuery();
-
         string sql = "Delete From news Where news_id=@news_id";
         //con.Open();
         SqlCommand cmd = new SqlCommand(sql, con);
@@ -329,6 +290,8 @@ public class DataUtil
         cmd.ExecuteNonQuery();
         con.Close();
     }
+
+    //Lấy 1 tin ra
 
     public news get1New(int news_id)
     {
@@ -353,97 +316,36 @@ public class DataUtil
         return n;
     }
 
-    // Cập nhật thông tin phòng
+    // Cập nhật thông tin tin
     public void CapnhatTin(news n)
     {
-        string sql = "Update news Set news_title=@news_title,news_description=@news_description,news_content=@news_content,news_avatar=@news_avatar,news_status=@news_status,news_cat_id=@news_cat_id where news_id=@news_id";
         con.Open();
-        SqlCommand cmd = new SqlCommand(sql, con);
-        cmd.Parameters.AddWithValue("news_title", n.news_title);
-        cmd.Parameters.AddWithValue("news_description", n.news_description);
-        cmd.Parameters.AddWithValue("news_content", n.news_content);
-        cmd.Parameters.AddWithValue("news_avatar", n.news_avatar);
-        cmd.Parameters.AddWithValue("news_status", n.news_status);
-        cmd.Parameters.AddWithValue("news_cat_id", n.news_cat_id);
-        cmd.Parameters.AddWithValue("news_id", n.news_id);
-        cmd.ExecuteNonQuery();
+        if (n.news_avatar != null)
+        {
+            string sql = "Update news Set news_title=@news_title,news_description=@news_description,news_content=@news_content,news_avatar=@news_avatar,news_status=@news_status,news_cat_id=@news_cat_id where news_id=@news_id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("news_title", n.news_title);
+            cmd.Parameters.AddWithValue("news_description", n.news_description);
+            cmd.Parameters.AddWithValue("news_content", n.news_content);
+            cmd.Parameters.AddWithValue("news_avatar", n.news_avatar);
+            cmd.Parameters.AddWithValue("news_status", n.news_status);
+            cmd.Parameters.AddWithValue("news_cat_id", n.news_cat_id);
+            cmd.Parameters.AddWithValue("news_id", n.news_id);
+
+            cmd.ExecuteNonQuery();
+        } else
+        {
+            string sql = "Update news Set news_title=@news_title,news_description=@news_description,news_content=@news_content,news_status=@news_status,news_cat_id=@news_cat_id where news_id=@news_id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("news_title", n.news_title);
+            cmd.Parameters.AddWithValue("news_description", n.news_description);
+            cmd.Parameters.AddWithValue("news_content", n.news_content);
+            cmd.Parameters.AddWithValue("news_status", n.news_status);
+            cmd.Parameters.AddWithValue("news_cat_id", n.news_cat_id);
+            cmd.Parameters.AddWithValue("news_id", n.news_id);
+
+            cmd.ExecuteNonQuery();
+        }
         con.Close();
     }
-
-    //// Get 1 schedule theo schedule_id
-    //public schedules get1Schedule(int schedule_id)
-    //{
-    //    string sql = "Select * From schedules Where schedule_id=@schedule_id";
-    //    con.Open();
-    //    SqlCommand cmd = new SqlCommand(sql, con);
-    //    cmd.Parameters.AddWithValue("schedule_id", schedule_id);
-    //    SqlDataReader rd = cmd.ExecuteReader();
-    //    schedules schedule = null;
-    //    if (rd.Read())
-    //    {
-    //        schedule = new schedules();
-    //        schedule.schedule_id = (int)rd["schedule_id"];
-    //        schedule.fullname = (string)rd["fullname"];
-    //        schedule.phone = (string)rd["phone"];
-    //        schedule.email = (string)rd["email"];
-    //        schedule.room_id = (int)rd["room_id"];
-    //        schedule.date_in = (DateTime)rd["date_in"];
-    //        schedule.date_out = (DateTime)rd["date_out"];
-    //    }
-    //    con.Close();
-    //    return schedule;
-    //}
-
-    //// Update schedule 
-    //public void updateSchedule(schedules schedule)
-    //{
-    //    string sql = "Update schedules Set fullname=@fullname, phone=@phone, email=@email, room_id=@room_id, date_in=@date_in, date_out=@date_out Where schedule_id=@schedule_id";
-    //    con.Open();
-    //    SqlCommand cmd = new SqlCommand(sql, con);
-    //    cmd.Parameters.AddWithValue("schedule_id", schedule.schedule_id);
-    //    cmd.Parameters.AddWithValue("fullname", schedule.fullname);
-    //    cmd.Parameters.AddWithValue("phone", schedule.phone);
-    //    cmd.Parameters.AddWithValue("email", schedule.email);
-    //    cmd.Parameters.AddWithValue("room_id", schedule.room_id);
-    //    cmd.Parameters.AddWithValue("date_in", schedule.date_in);
-    //    cmd.Parameters.AddWithValue("date_out", schedule.date_out);
-    //    cmd.ExecuteNonQuery();
-    //    con.Close();
-    //}
-
-    //// Tự động cập nhật trạng thái phòng là trống sau khi đặt phòng hết hạn
-    //public void CreatingNewThreadTimer()
-    //{
-    //    Thread thread = new Thread(new ThreadStart(MyTimer));
-    //    thread.Start();
-    //}
-    //public void MyTimer()
-    //{
-    //    DateTime time;
-    //    while (true)
-    //    {
-    //        time = DateTime.Now;
-    //        int hour = time.Hour;
-    //        int minute = time.Minute;
-    //        int second = time.Second;
-    //        // Tự động chạy hàm kiểm tra date_out để set room_status=0 (phòng trống)
-    //        if (hour == 21 && minute == 21 && second == 21)
-    //        {
-    //            autoUpdateRoomStatus();
-    //        }
-    //    }
-    //}
-    //public void autoUpdateRoomStatus()
-    //{
-    //    con.Close();
-    //    con.Open();
-    //    DateTime today = DateTime.Today;
-    //    // Cập nhật room_status là 0 (Phòng trống) của room_id trong schedules khi day_out bằng today
-    //    string update_room = "update rooms set room_status=0 where room_id IN (select room_id from schedules where schedule_status=0 and date_out=@today)";
-    //    SqlCommand cmd_room = new SqlCommand(update_room, con);
-    //    cmd_room.Parameters.AddWithValue("today", today);
-    //    cmd_room.ExecuteNonQuery();
-    //    // System.Diagnostics.Debug.WriteLine(today);
-    //    con.Close();
-    //}
 }
