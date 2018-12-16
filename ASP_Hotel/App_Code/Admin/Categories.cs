@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 /// </summary>
 public class Categories
 {
-    SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-T17IS19\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True");
+    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True");
 	public Categories()
 	{
         

@@ -1,16 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Themnv.aspx.cs" Inherits="Admin_Themnv" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageAdmin.master" AutoEventWireup="true" CodeFile="ThemNV.aspx.cs" Inherits="Admin_ThemNV" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <h2>Them Nhan Vien Moi</h2>
-             <asp:Table runat="server" ID="t1">
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+    Thêm nhân viên
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
+    <asp:Table runat="server" ID="t1">
                     <asp:TableRow>
                     <asp:TableCell> phone</asp:TableCell>
                     <asp:TableCell>
@@ -38,7 +32,8 @@
                  <asp:TableRow>
                     <asp:TableCell> avatar </asp:TableCell>
                     <asp:TableCell>
-                        <asp:TextBox ID="txtavatar" runat="server"></asp:TextBox>
+                        <%--<asp:TextBox ID="txtavatar" runat="server"></asp:TextBox>--%>
+                        <asp:FileUpload ID="FileUpload" runat="server" Width="80px" Height="80px" />
                     </asp:TableCell>
                 </asp:TableRow>
                     <asp:TableRow>
@@ -55,7 +50,5 @@
             <asp:Label ID="msg" runat="server" ForeColor="Red"></asp:Label>
             <p></p>
             <asp:Button ID="bds" runat="server" PostBackUrl="~/Admin/DSNhanVien.aspx"  Text="Danh sach nhan vien" />
-        </div>
-    </form>
-</body>
-</html>
+</asp:Content>
+

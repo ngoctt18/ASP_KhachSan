@@ -52,7 +52,11 @@
                               <ul>
                                  <li><a href="index.aspx" data-link-alt="Home" class="scroll"><span>Trang chủ</span></a></li>
                                  <li><a href="Order.aspx" data-link-alt="Service" class="scroll"><span>Dịch vụ</span></a></li>
+<<<<<<< HEAD
                                  <li><a href="news.aspx" data-link-alt="News" class="active"><span>Tin tức</span></a></li>
+=======
+                                 <li><a href="news.aspx" data-link-alt="News" class="scroll"><span>Tin tức</span></a></li>
+>>>>>>> 60f5fd8f8b0bfedf1813bbf6da075effac4f361a
                                  <li><a href="Admin/Dangnhap.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li>
                               </ul>
                            </nav>

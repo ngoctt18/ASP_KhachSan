@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_Themnv : System.Web.UI.Page
+public partial class Admin_ThemNV : System.Web.UI.Page
 {
     nhanvien data = new nhanvien();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
+        if (!IsPostBack)
         {
             dddepartment_id.DataSource = data.departments();
             dddepartment_id.DataTextField = "department_name";
@@ -29,12 +29,19 @@ public partial class Admin_Themnv : System.Web.UI.Page
             s.email = txtemail.Text;
             s.address = txtaddress.Text;
             s.department_id = int.Parse(dddepartment_id.SelectedValue);
-            s.avatar = txtavatar.Text;
+            //s.avatar = txtavatar.Text;
+            if (Page.IsValid && FileUpload.HasFile)
+            {
+                string fileName = "images/" + FileUpload.FileName;
+                string filePath = MapPath(fileName);
+                FileUpload.SaveAs(filePath);
+                s.avatar = FileUpload.FileName;
+            }
             data.Themnv(s);
             msg.ForeColor = System.Drawing.Color.Blue;
             msg.Text = "Them thanh cong";
 
-           
+
         }
         catch (Exception ex)
         {
@@ -44,7 +51,4 @@ public partial class Admin_Themnv : System.Web.UI.Page
 
 
     }
-
-
-
 }

@@ -34,7 +34,7 @@ public partial class Admin_DSNhanVien : System.Web.UI.Page
             int m = Convert.ToInt16(e.CommandArgument);
             employees s = data .layra1nv(m);
             Session["nv"] = s;
-            Response.Redirect("Suanv.aspx");
+            Response.Redirect("SuaNV.aspx");
 
 
 

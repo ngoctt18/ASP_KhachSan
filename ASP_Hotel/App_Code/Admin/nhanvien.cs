@@ -112,7 +112,7 @@ public class nhanvien
         cmd.Parameters.AddWithValue("address", s.address);
         cmd.Parameters.AddWithValue("department_id", s.department_id);
         cmd.Parameters.AddWithValue("avatar", s.avatar);
-        cmd.Parameters.AddWithValue("employee_id", s.employee_id);// chay thu xem
+        cmd.Parameters.AddWithValue("employee_id", s.employee_id);
 
         cmd.ExecuteNonQuery();
         con.Close();
