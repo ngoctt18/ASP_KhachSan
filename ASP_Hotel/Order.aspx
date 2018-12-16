@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head runat="server">
-      <title>ASP | Website khách sạn</title>
+      <title>Đặt dịch vụ</title>
       <!-- css files -->
       <link rel="stylesheet" href="assets/css/bootstrap.css">
       <!-- Bootstrap-Core-CSS -->
@@ -53,6 +53,7 @@
                                  <li><a href="index.aspx" data-link-alt="Home" class="scroll"><span>Trang chủ</span></a></li>
                                  <li><a href="Order.aspx" data-link-alt="Service" class="active"><span>Dịch vụ</span></a></li>
                                  <li><a href="news.aspx" data-link-alt="News" class="scroll"><span>Tin tức</span></a></li>
+                                 <li><a href="Contact.aspx" data-link-alt="Contact" class="scroll"><span>Liên hệ</span></a></li>
                                  <li><a href="Admin/Dangnhap.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li>
                               </ul>
                            </nav>
@@ -127,6 +128,39 @@
             </div>
          </div>
          <!-- //header -->
+		  
+         <!-- /services -->
+         <div class="services" id="services">
+            <div class="container">
+               <div class="services-agile-head">
+                  <h3>Dịch vụ</h3>
+               </div>
+               <div class="w3-agile-grids">
+                  <div class="col-md-6 w3-agile-services-left">
+                     <div class="w3-services-text">
+                        <ul class="services-head">
+                           <li>
+                              <h3>10</h3>
+                           </li>
+                           <li>
+                              <h5>tuần</h5>
+                           </li>
+                           <li>
+                              <h5>kinh nghiệm</h5>
+                           </li>
+                        </ul>
+                        <p style="font-size: 15px;padding-right:15px;">Khách sạn Hà Nội là khách sạn Quốc tế đầu tiên tại Hà Nội với 218 phòng nghỉ tiện nghi, hiện đại và sang trọng. Đặc biệt, với vị trí trung tâm thuận lợi kề bên Hồ Giảng Võ yên bình, khách sạn là điểm dừng chân lý tưởng của du khách trong và ngoài nước mỗi khi có chuyến công tác hay du lịch cùng bạn bè và người thân..</p>
+                        <p style="font-size: 15px;padding-right:15px;">Hơn nữa, Khách sạn Hà Nội đã được nổi danh là địa chỉ đứng đầu của Hà nội về ẩm thực Trung Hoa cùng các dịch vụ giải trí hoàn hảo và phong phú. Đến với Khách sạn Hà Nội, chúng tôi hy vọng sẽ đem lại cho quý khách những trải nghiệm thú vị và hài lòng nhất.</p>
+                     </div>
+                  </div>
+                  <div class="col-md-6 w3-agile-services-right">
+                     <img src="assets/images/ab1.jpg" alt="services">
+                  </div>
+                  <div class="clearfix"></div>
+               </div>
+            </div>
+         </div>
+         <!-- //services-->
          <!--footer-->
          <div class="footer-w3">
             <p>&copy; 2018 Website Hotel | ASP.NET</p>

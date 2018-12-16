@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageAdmin.master" AutoEventWireup="true" CodeFile="DSkhachhang.aspx.cs" Inherits="DSkhachhang" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Danh sach khach hang
+    Danh sách khách hàng
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
+	<h2>Danh sách khách hàng</h2>
     <asp:GridView ID="grdDskh" runat="server" AutoGenerateColumns="false" class="table-bordered table" >
         <Columns>
             <asp:BoundField DataField="user_id" HeaderText="user_id" />
@@ -25,6 +26,6 @@
         </Columns>
     </asp:GridView>
     <p></p>
-    <asp:Button  ID="bthem" runat="server" PostBackUrl="~/Admin/Themkh.aspx" Text="Them khach hang" />
+    <asp:Button class="btn btn-success" ID="bthem" runat="server" PostBackUrl="~/Admin/Themkh.aspx" Text="Them khach hang" />
 </asp:Content>
 

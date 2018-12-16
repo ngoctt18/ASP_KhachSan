@@ -1,8 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="news.aspx.cs" Inherits="news" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="Contact" %>
+
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
-   <head runat="server">
-      <title>Tin tức mới</title>
+<head runat="server">
+      <title>ASP | Website khách sạn</title>
       <!-- css files -->
       <link rel="stylesheet" href="assets/css/bootstrap.css">
       <!-- Bootstrap-Core-CSS -->
@@ -22,9 +24,9 @@
          .footer-w3 {margin-top: 3px;}
          . {font-family: verdana;}
          h5 { font-family: verdana;}
-         .portfolio-grids img {
-            max-width: 70%;
-        }
+		 .get-touch-bottom {
+				text-align: center;
+			}
       </style>
    </head>
    <body>
@@ -35,11 +37,15 @@
                <div class="banner-agile-top">
                   <div class="number">
                      <h3><i class="fa fa-phone" aria-hidden="true"></i> +84 975 853 528</h3>
+                     <div class="top-icons">
+                        <ul>
+                        </ul>
+                     </div>
                   </div>
                   <div class="clearfix"></div>
                </div>
                <div class="logo">
-                  <h1><a href="Order.aspx"><span>Đặt dịch vụ</span></a></h1>
+                  <h1><a href="index.aspx"><span>welcome hotel</span></a></h1>
                </div>
                <!-- navigation -->
                <div class="top-left">
@@ -51,8 +57,8 @@
                               <ul>
                                  <li><a href="index.aspx" data-link-alt="Home" class="scroll"><span>Trang chủ</span></a></li>
                                  <li><a href="Order.aspx" data-link-alt="Service" class="scroll"><span>Dịch vụ</span></a></li>
-                                 <li><a href="news.aspx" data-link-alt="News" class="active"><span>Tin tức</span></a></li>
-                                 <li><a href="Contact.aspx" data-link-alt="Contact" class="scroll"><span>Liên hệ</span></a></li>
+                                 <li><a href="news.aspx" data-link-alt="News" class="scroll"><span>Tin tức</span></a></li>
+                                 <li><a href="Contact.aspx" data-link-alt="Contact" class="active"><span>Liên hệ</span></a></li>
                                  <li><a href="Admin/Dangnhap.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li>
                               </ul>
                            </nav>
@@ -73,7 +79,7 @@
                   <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                      <ContentTemplate>
                         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                        <asp:Timer ID="Timer2" runat="server" Interval="5000" OnTick="Timer2_Tick"></asp:Timer>
+                        <asp:Timer ID="Timer1" runat="server" Interval="5000" OnTick="Timer1_Tick"></asp:Timer>
                         <asp:Image ID="imgSlide" runat="server" ImageUrl="assets/images/ban2.jpg" />
                      </ContentTemplate>
                   </asp:UpdatePanel>
@@ -88,47 +94,36 @@
             <div class="clearfix"></div>
          </div>
          <!--//Slider-->
-         <!--//main-->
-         <div class="main" id="main" style="top: 22%;width: 35%;">
-         </div>
+         <!--//main
          <!-- //header -->
-         <!-- Gallery -->
-         <div id="gallery" class="gallery">
-            <div class="container">
-               <div class="agileits-gal-title">
-                  <h3>Our news</h3>
-               </div>
-               <div class="sap_tabs">
-                  <div id="horizontalTab">
-                     <div class="clearfix"> </div>
-                     <div class="resp-tabs-container">
-                         <%
-                             var news = new DataUtil().getAllNews();
-                             foreach(var tin in news)
-                             {
-                                 Response.Write("<div class='tab-1'>");
-                                 Response.Write("<div class='clearfix'></div>");
-                                 Response.Write("<div class='col-md-6 portfolio-grids offer-gal-images offer-gal-img2'>");
-                                 Response.Write("<img src='Admin/images/"+tin.news_avatar+"' />");
-                                 Response.Write("</div>");
-                                 Response.Write("<div class='col-md-6 portfolio-grids'>");
-                                 Response.Write("<div class='gallery-text-agile agile-offer1'>");
-                                 Response.Write("<h3>"+tin.news_title+"</h3>");
-                                 Response.Write("<p>"+tin.news_description+"</p>");
-                                 Response.Write("<p>"+tin.news_content+"</p>");
-                                 Response.Write("</div>");
-                                 Response.Write(" </div>");
-                                 Response.Write(" <div class='clearfix'></div>");
-                                 Response.Write(" </div>");
-                             }
-                             %>
-                         
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!-- //Gallery -->
+		<!-- contact form -->
+		<div class="contact-form" id="contact-form">
+			<div class="container">
+				<div class="contact-agileits-title">
+					<h3>Contact Us</h3>
+				</div>
+				<div class="clearfix"></div>
+				<!--get in touch start here-->
+				<div class="get-touch" id="contact1">
+					<div class="get-touch-main">
+						<div class="get-touch-bottom">
+							<form action="#" method="post">
+								<asp:TextBox ID="txtfullname" runat="server" placeholder="Full Name" required=""></asp:TextBox>
+								<asp:TextBox ID="txtphone" runat="server" placeholder="Phone Number" required=""></asp:TextBox>
+								<asp:TextBox type="email" ID="txtemail" runat="server" placeholder="Email" required=""></asp:TextBox>
+
+								<asp:TextBox ID="Message" runat="server" placeholder="Message" required=""></asp:TextBox>
+
+								<asp:Button ID="btnthem" runat="server" Text="Submit" OnClick="btnthem_Click"  OnClientClick="return confirm('Bạn có muốn gửi liên hệ?')"/>
+							</form>
+						</div>
+						<asp:Label ID="msg" runat="server" ForeColor="Red"></asp:Label>
+					</div>
+				</div>
+				<!--get in touch end here-->
+			</div>
+		</div>
+		<!-- contact -->
          <!--footer-->
          <div class="footer-w3">
             <p>&copy; 2018 Website Hotel | ASP.NET</p>

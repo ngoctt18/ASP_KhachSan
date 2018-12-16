@@ -29,7 +29,7 @@ public partial class Admin_Dangnhap : System.Web.UI.Page
         con.Close();
         if (verify > 0)
         {
-            Response.Redirect("DSNhanVien.aspx");
+            Response.Redirect("schedulesList.aspx");
         }
         else
         {

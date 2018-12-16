@@ -25,6 +25,5 @@
         </Columns>
     </asp:GridView>
     <p></p>
-    <asp:Button  ID="bthem" runat="server" PostBackUrl="~/Admin/Themlh.aspx" Text="Them liên hệ" />
 </asp:Content>
 
