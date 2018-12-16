@@ -1,10 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageAdmin.master" AutoEventWireup="true" CodeFile="ThemNV.aspx.cs" Inherits="Admin_ThemNV" %>
 
+<<<<<<< HEAD
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     Thêm nhân viên
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
     <asp:Table runat="server" ID="t1">
+=======
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Them Nhan Vien Moi</h2>
+             <asp:Table runat="server" ID="t1">
+>>>>>>> 63f27a7d265bc01af2963ea867eaba9eb99cc724
                     <asp:TableRow>
                     <asp:TableCell> phone</asp:TableCell>
                     <asp:TableCell>

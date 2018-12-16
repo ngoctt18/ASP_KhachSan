@@ -7,7 +7,8 @@ using System.Web.UI.WebControls;
 
 public partial class Admin_schedulesList : System.Web.UI.Page
 {
-	KHDatPhong data = new KHDatPhong();
+    KHDatPhong data = new KHDatPhong();
+
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		if (!IsPostBack)

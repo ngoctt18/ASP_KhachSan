@@ -27,6 +27,7 @@
 		  <asp:DropDownList ID="room_type_id" class="ddlAdd" runat="server"></asp:DropDownList>
       </asp:TableCell>
    </asp:TableRow>
+
    <asp:TableRow>
       <asp:TableCell></asp:TableCell>
       <asp:TableCell>
