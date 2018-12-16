@@ -22,6 +22,10 @@
          .footer-w3 {margin-top: 3px;}
          . {font-family: verdana;}
          h5 { font-family: verdana;}
+		 .ddlAdd {
+		    width: 80%;
+			padding: 10px;
+		 }
       </style>
    </head>
    <body>
@@ -97,13 +101,6 @@
                      </asp:DropDownList>
                   </div>
                </div>
-               <%--<div class="w3_agileits_main_grid w3l_main_grid">
-                  <div class="agileits_grid">
-                     <h5>Chọn danh mục </h5>
-                     <asp:DropDownList ID="drppickcategory" required="" runat="server" OnSelectedIndexChanged="drppickcategory_SelectedIndexChanged">
-                     </asp:DropDownList>
-                  </div>
-                  </div>--%>
                <div class="agileits_main_grid w3_agileits_main_grid">
                   <div class="wthree_grid">
                      <h5>Chọn dịch vụ</h5>

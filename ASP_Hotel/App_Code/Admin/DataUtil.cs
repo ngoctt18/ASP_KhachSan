@@ -13,7 +13,7 @@ public class DataUtil
     SqlConnection con;
     public DataUtil()
     {
-        string strConnect = @"Data Source=DESKTOP-T17IS19\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True";
+        string strConnect = @"Data Source=.\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True";
         con = new SqlConnection(strConnect);
     }
 

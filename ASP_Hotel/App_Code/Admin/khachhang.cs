@@ -13,7 +13,7 @@ public class khachhang
     SqlConnection con;
     public khachhang()
     {
-        string StrConnnect = @"Data Source=DESKTOP-16M4UR1\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True";
+        string StrConnnect = @"Data Source=.\SQLEXPRESS;Initial Catalog=qlkhachsan;Integrated Security=True";
         con = new SqlConnection(StrConnnect);
     }
     public List<users> users()
