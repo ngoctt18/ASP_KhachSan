@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="Order" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="news.aspx.cs" Inherits="news" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head runat="server">
@@ -47,8 +47,8 @@
                            <nav class="linkEffects linkHoverEffect_2">
                               <ul>
                                  <li><a href="index.aspx" data-link-alt="Home" class="scroll"><span>Trang chủ</span></a></li>
-                                 <li><a href="Order.aspx" data-link-alt="Service" class="active"><span>Dịch vụ</span></a></li>
-                                 <li><a href="news.aspx" data-link-alt="News" class="scroll"><span>Tin tức</span></a></li>
+                                 <li><a href="Order.aspx" data-link-alt="Service" class="scroll"><span>Dịch vụ</span></a></li>
+                                 <li><a href="news.aspx" data-link-alt="News" class="active"><span>Tin tức</span></a></li>
                                  <li><a href="Admin/Dangnhap.aspx" data-link-alt="Admin" class="scroll"><span>Admin</span></a></li>
                               </ul>
                            </nav>
@@ -86,50 +86,40 @@
          <!--//Slider-->
          <!--//main-->
          <div class="main" id="main" style="top: 22%;width: 35%;">
-            <div class="w3layouts_main_grid">
-               <div class="booking-form-head-agile">
-                  <h3>Đặt dịch vụ tại phòng</h3>
+         </div>
+         <!-- //header -->
+         <!-- Gallery -->
+         <div id="gallery" class="gallery">
+            <div class="container">
+               <div class="agileits-gal-title">
+                  <h3>Our gallery</h3>
                </div>
-               <div class="agileits_main_grid w3_agileits_main_grid">
-                  <div class="wthree_grid">
-                     <h5>Chọn phòng </h5>
-                     <asp:DropDownList class="ddlAdd" ID="drppickroom" required="" runat="server">
-                     </asp:DropDownList>
-                  </div>
-               </div>
-               <%--<div class="w3_agileits_main_grid w3l_main_grid">
-                  <div class="agileits_grid">
-                     <h5>Chọn danh mục </h5>
-                     <asp:DropDownList ID="drppickcategory" required="" runat="server" OnSelectedIndexChanged="drppickcategory_SelectedIndexChanged">
-                     </asp:DropDownList>
-                  </div>
-                  </div>--%>
-               <div class="agileits_main_grid w3_agileits_main_grid">
-                  <div class="wthree_grid">
-                     <h5>Chọn dịch vụ</h5>
-                     <asp:DropDownList class="ddlAdd" ID="drppickservice" required="" runat="server">
-                     </asp:DropDownList>
-                  </div>
-               </div>
-               <div class="agileits_w3layouts_main_grid w3ls_main_grid">
-                  <div class="agileinfo_grid">
-                     <h5>Số lượng</h5>
-                     <div class="agileits_w3layouts_main_gridl">
-                        <asp:TextBox ID="txtpickquantity" runat="server" required="" />
-                     </div>
+               <div class="sap_tabs">
+                  <div id="horizontalTab">
                      <div class="clearfix"> </div>
+                     <div class="resp-tabs-container">
+                        <div class="tab-1">
+                           <div class="clearfix"></div>
+                           <div class="col-md-6 portfolio-grids offer-gal-images offer-gal-img2">
+                              <%--<div class="offer-gallery-img2">
+                              </div>--%>
+							   <%--Cho ảnh ở đây--%>
+                           </div>
+                           <div class="col-md-6 portfolio-grids">
+                              <div class="gallery-text-agile agile-offer1">
+                                 <h3>single Room</h3>
+                                 <p>Fresh local baby whiting fillets in a sesame and parsley crumb s/w chips salad lemon and tartare...</p>
+								  <p>ádasdasd</p>
+                              </div>
+                           </div>
+                           <div class="clearfix"></div>
+                        </div>
+                     </div>
                   </div>
-               </div>
-               <div class="w3_main_grid">
-                  <asp:Label ID="err_msg" runat="server" />
-                  <div class="w3_main_grid_right">
-                     <asp:Button ID="btnOderUser" runat="server" Text="Đặt ngay" OnClientClick="return confirm('Chắc chắn đặt dịch vụ ?')" OnClick="btnOderUser_Click"/>
-                  </div>
-                  <div class="clearfix"> </div>
                </div>
             </div>
          </div>
-         <!-- //header -->
+         <!-- //Gallery -->
          <!--footer-->
          <div class="footer-w3">
             <p>&copy; 2018 Website Hotel | ASP.NET</p>
