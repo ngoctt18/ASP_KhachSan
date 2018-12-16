@@ -5,17 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_DSNhanVien : System.Web.UI.Page
+public partial class DSkhachhang : System.Web.UI.Page
 {
-    nhanvien data = new nhanvien();
+    khachhang data = new khachhang();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
-        HienthiDulieu();
+        if (!IsPostBack)
+            HienthiDulieu();
     }
     private void HienthiDulieu()
     {
-        grdDsnv.DataSource = data.employees();
+        grdDskh.DataSource = data.users();
         DataBind();
     }
     public void Xoa_Click(object sender, CommandEventArgs e)
@@ -23,7 +23,7 @@ public partial class Admin_DSNhanVien : System.Web.UI.Page
         if (e.CommandName == "xoa")
         {
             int m = Convert.ToInt16(e.CommandArgument);
-            data.Xoanv(m);
+            data.Xoakh(m);
             HienthiDulieu();
         }
     }
@@ -32,9 +32,9 @@ public partial class Admin_DSNhanVien : System.Web.UI.Page
         if (e.CommandName == "sua")
         {
             int m = Convert.ToInt16(e.CommandArgument);
-            employees s = data .layra1nv(m);
-            Session["nv"] = s;
-            Response.Redirect("SuaNV.aspx");
+            users s = data.layra1kh(m);
+            Session["kh"] = s;
+            Response.Redirect("Suakh.aspx");
 
 
 

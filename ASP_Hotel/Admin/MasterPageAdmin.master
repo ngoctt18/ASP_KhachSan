@@ -26,6 +26,10 @@
 		color: green;
 		background: #0080002e;
 	}
+    img#avatar, img#contentTable_avatar  {
+        width: 150px;
+        margin: 10px;
+    }
   </style>
 
 </head>
@@ -33,15 +37,7 @@
 <body id="page-top">
     <form id="form1" runat="server">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <a class="navbar-brand mr-1" href="index.html">Danh sách nhân viên</a>
-=======
     <a class="navbar-brand mr-1" href="roomsList.aspx">Admin Controlpanel</a>
->>>>>>> 86a330c41dd530ceb8c93edcfcf0418d781f8e52
-=======
-    <a class="navbar-brand mr-1" href="roomsList.aspx">Admin Controlpanel</a>
->>>>>>> 86a330c41dd530ceb8c93edcfcf0418d781f8e52
     <!-- Navbar Search -->
     <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
     </div>

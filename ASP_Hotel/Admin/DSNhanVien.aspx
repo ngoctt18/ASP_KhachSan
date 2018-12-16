@@ -12,8 +12,14 @@
             <asp:BoundField DataField="email" HeaderText="Email" />
             <asp:BoundField DataField="address" HeaderText="Address" />
             <asp:BoundField DataField="department_id" HeaderText="Department_id" />
-            <asp:BoundField DataField="avatar" HeaderText="Avatar" />
-            <asp:TemplateField HeaderText="Xoa">
+           <%-- <asp:BoundField DataField="avatar" HeaderText="Avatar" />--%>
+          <asp:TemplateField runat="server" HeaderText="Anh">
+              <ItemTemplate>
+                  <asp:Image ID="img" runat="server" ImageUrl='<%# "images/" +Eval("avatar")  %>' Width="80px" Height="80px" />
+              </ItemTemplate>
+          </asp:TemplateField>
+
+           <%-- <asp:TemplateField HeaderText="Xoa">
                 <ItemTemplate>
                     <asp:Button ID="xoa" CommandName="xoa" 
                         CommandArgument='<%#Bind("employee_id")%>' Text="xoa" 
@@ -28,9 +34,19 @@
                         CommandArgument='<%#Bind("employee_id")%>' Text="sua" 
                         OnCommand="Sua_Click" runat="server"
                          />
-                </ItemTemplate>
+                </ItemTemplate>--%>
                
-            </asp:TemplateField>
+            <%--</asp:TemplateField>--%>
+            <asp:TemplateField HeaderText="Chức năng">
+            	<ItemTemplate>
+					<asp:Button ID="xoa" class="btn btn-danger" CommandName="xoa" CommandArgument='<%#Bind("employee_id") %>'
+						OnCommand="Xoa_Click" runat="server" Text="Xóa" 
+						OnClientClick="return confirm('Bạn có chắc muốn xóa phòng này?')" />
+				
+					<asp:Button ID="sua" class="btn btn-info" CommandName="sua" CommandArgument='<%#Bind("employee_id") %>'
+						OnCommand="Sua_Click" runat="server" Text="Sửa"/>
+				</ItemTemplate>
+			</asp:TemplateField>
         </Columns>
     </asp:GridView>
     <p></p>

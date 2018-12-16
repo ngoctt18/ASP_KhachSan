@@ -1,10 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageAdmin.master" AutoEventWireup="true" CodeFile="SuaNV.aspx.cs" Inherits="Admin_SuaNV" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Suanv1.aspx.cs" Inherits="Admin_Suanv" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Sửa nhân viên
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
-    <asp:Table runat="server" ID="t1">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+             <h2>Sua Nhan Vien </h2>
+             <asp:Table runat="server" ID="t1">
                   <asp:TableRow>
                     <asp:TableCell> employee_id</asp:TableCell>
                     <asp:TableCell>
@@ -46,7 +52,7 @@
                     <asp:TableRow>
                     <asp:TableCell>department_id</asp:TableCell>
                     <asp:TableCell>
-                        <asp:DropDownList ID ="dddepartment_id" class="ddlAdd" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID ="dddepartment_id" runat="server"></asp:DropDownList>
                     </asp:TableCell>
                 </asp:TableRow>
 
@@ -57,5 +63,8 @@
             <asp:Label ID="msg" runat="server" ForeColor="Red"></asp:Label>
             <p></p>
             <asp:Button ID="bds" runat="server" PostBackUrl="~/Admin/DSNhanVien.aspx"  Text="Danh sach nhan vien" />
-</asp:Content>
-
+        </div>
+    
+    </form>
+</body>
+</html>
