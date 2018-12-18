@@ -114,6 +114,11 @@
                   <span>Quản lý nhân viên</span></a>
                </li>
                 <li class="nav-item active">
+                  <a class="nav-link" href="DSBoPhan.aspx">
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Danh sách bộ phận</span></a>
+               </li>
+                <li class="nav-item active">
                   <a class="nav-link" href="DSKhachHang.aspx">
                   <i class="fas fa-fw fa-table"></i>
                   <span>Quản lý khách hàng</span></a>
