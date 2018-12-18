@@ -39,7 +39,7 @@
                     <asp:TableCell> avatar </asp:TableCell>
                     <asp:TableCell>
                         <%--<asp:TextBox ID="txtavatar" runat="server"></asp:TextBox>--%>
-                        <asp:Image ID="avatar" runat="server" ImageUrl="" />
+                        <asp:Image ID="avatar" runat="server" ImageUrl="#" />
                         <asp:FileUpload ID="FileUpload" runat="server" Width="80px" Height="80px" />
                     </asp:TableCell>
                 </asp:TableRow>
