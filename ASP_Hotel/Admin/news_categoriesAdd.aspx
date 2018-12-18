@@ -14,9 +14,8 @@
             <asp:TableCell>Description</asp:TableCell><asp:TableCell><asp:TextBox ID="txtdescription" runat="server" required=""/></asp:TableCell>
         </asp:TableRow>
         </asp:Table>
+    </br>
     <asp:Button ID="btnThem" class="btn btn-success" runat="server" Text="Thêm" OnClick="btnThem_Click" />
-
-    <%--<asp:Button ID="btnBoqua" runat="server" Text="Bỏ qua" PostBackUrl="~/Admin/news_categoriesList.aspx"/>--%>
     <p></p>
     <asp:Label ID="msg" runat="server" ForeColor="Red" />
 </asp:Content>

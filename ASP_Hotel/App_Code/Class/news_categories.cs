@@ -14,7 +14,7 @@ public class news_categories
         // TODO: Add constructor logic here
         //
     }
-    public int news_cat_id{ get; set; }
+    public int news_cat_id { get; set; }
     public string news_cat_name { get; set; }
     public string news_cat_description { get; set; }
 }

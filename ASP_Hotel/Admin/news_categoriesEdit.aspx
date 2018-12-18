@@ -12,10 +12,8 @@
             <asp:TableCell>Phone</asp:TableCell><asp:TableCell><asp:TextBox ID="txtname" runat="server" required=""/></asp:TableCell></asp:TableRow><asp:TableRow>
             <asp:TableCell>Password</asp:TableCell><asp:TableCell><asp:TextBox ID="txtdescription" runat="server" required=""/></asp:TableCell></asp:TableRow>
     </asp:Table>
-    <p></p>
+    </br>
     <asp:Button ID="btnSua" class="btn btn-success" runat="server" Text="Cập nhật" OnClick="btnSua_Click" />
-    
-    <%--<asp:Button ID="btnBoqua" runat="server" Text="Bỏ qua" PostBackUrl="~/Admin/news_categoriesList.aspx" />--%>
     <p></p>
     <asp:Label ID="msg" runat="server" Font-Italic="true" />
 </asp:Content>

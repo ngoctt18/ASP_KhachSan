@@ -108,7 +108,8 @@ public class DataUtil
             cmd.Parameters.AddWithValue("av", a.avatar);
             cmd.Parameters.AddWithValue("admin_id", a.admin_id);
             cmd.ExecuteNonQuery();
-        } else
+        }
+        else
         {
             string strSql = "update admins set phone=@p,password=@pa,email=@e,address=@ad where admin_id=@admin_id";
             SqlCommand cmd = new SqlCommand(strSql, con);
@@ -333,7 +334,8 @@ public class DataUtil
             cmd.Parameters.AddWithValue("news_id", n.news_id);
 
             cmd.ExecuteNonQuery();
-        } else
+        }
+        else
         {
             string sql = "Update news Set news_title=@news_title,news_description=@news_description,news_content=@news_content,news_status=@news_status,news_cat_id=@news_cat_id where news_id=@news_id";
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -346,6 +348,82 @@ public class DataUtil
 
             cmd.ExecuteNonQuery();
         }
+        con.Close();
+    }
+
+    //Phần loại phòng
+    //Lấy ra danh sách loại Phòng ( room_types)
+    public List<room_types> getRoom_types()
+    {
+        List<room_types> li = new List<room_types>();
+        string strSql = "select*from room_types";
+        con.Open();
+        SqlCommand cmd = new SqlCommand(strSql, con);
+        SqlDataReader rd = cmd.ExecuteReader();
+        while (rd.Read())
+        {
+            room_types rt = new room_types();
+            rt.room_type_id = (int)rd["room_type_id"];
+            rt.room_type_name = (string)rd["room_type_name"];
+
+            li.Add(rt);
+        }
+        con.Close();
+        return li;
+    }
+
+    //Thêm 1 loại phòng
+    public void addroom_types(room_types rt)
+    {
+        con.Open();
+        String strSql = "insert into room_types values(@name)";
+        SqlCommand cmd = new SqlCommand(strSql, con);
+        cmd.Parameters.AddWithValue("name", rt.room_type_name);
+
+        cmd.ExecuteNonQuery();
+        con.Close();
+    }
+
+    //Xóa một loại phòng
+    public void deleteRoom_types(int room_type_id)
+    {
+        con.Open();
+        String strSql = "delete from room_types where room_type_id=@room_type_id";
+        SqlCommand cmd = new SqlCommand(strSql, con);
+        cmd.Parameters.AddWithValue("room_type_id", room_type_id);
+        cmd.ExecuteNonQuery();
+        con.Close();
+    }
+
+    //Lấy ra 1 phòng
+    public room_types Layra1phong(int room_type_id)
+    {
+        List<room_types> li = new List<room_types>();
+        string strSql = "select*from room_types where room_type_id=@room_type_id";
+        con.Open();
+        SqlCommand cmd = new SqlCommand(strSql, con);
+        cmd.Parameters.AddWithValue("room_type_id", room_type_id);
+        room_types rt = null;
+        SqlDataReader rd = cmd.ExecuteReader();
+        while (rd.Read())
+        {
+            rt = new room_types();
+            rt.room_type_id = (int)rd["room_type_id"];
+            rt.room_type_name = (string)rd["room_type_name"];
+        }
+        con.Close();
+        return rt;
+    }
+
+    //Cập nhật loại phòng
+    public void Capnhatloaiphong(room_types rt)
+    {
+        con.Open();
+        string strSql = "update room_types set room_type_name=@name where room_type_id=@room_type_id";
+        SqlCommand cmd = new SqlCommand(strSql, con);
+        cmd.Parameters.AddWithValue("name", rt.room_type_name);
+        cmd.Parameters.AddWithValue("room_type_id", rt.room_type_id);
+        cmd.ExecuteNonQuery();
         con.Close();
     }
 }
