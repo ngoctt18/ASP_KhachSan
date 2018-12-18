@@ -32,6 +32,6 @@
         </Columns>
     </asp:GridView>
     <p></p>
-    <asp:Button class="btn btn-success" ID="bthem" runat="server" PostBackUrl="~/Admin/Themnv.aspx" Text="Them nhan vien"/>
+    <asp:Button class="btn btn-success" ID="bthem" runat="server" PostBackUrl="~/Admin/Themnv.aspx" Text="Thêm Nhân Viên"/>
 </asp:Content>
 

@@ -71,6 +71,11 @@
                   <span>Quản lý phòng</span></a>
                </li>
                <li class="nav-item active">
+                  <a class="nav-link" href="room_typesList.aspx">
+                  <i class="fas fa-fw fa-chart-area"></i>
+                  <span>Danh sách loại phòng</span></a>
+               </li>
+               <li class="nav-item active">
                   <a class="nav-link" href="Categories.aspx">
                   <i class="fas fa-fw fa-tachometer-alt"></i>
                   <span>Danh mục dịch vụ</span>

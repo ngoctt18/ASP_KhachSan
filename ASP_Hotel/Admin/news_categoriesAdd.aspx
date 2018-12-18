@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
             <h2> Them danh mục tin tức</h2>
-    <asp:Table runat="server" ID="t1">
+    <asp:Table runat="server" ID="t1" class="table table-bordered">
         <asp:TableRow>
             <asp:TableCell>Name</asp:TableCell>
             <asp:TableCell><asp:TextBox ID="txtname" runat="server" required=""/></asp:TableCell>

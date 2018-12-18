@@ -53,9 +53,9 @@ public partial class Order : System.Web.UI.Page
             o.service_id = int.Parse(drppickservice.SelectedValue.ToString());
             o.quantity = int.Parse(txtpickquantity.Text.ToString());
             o.bill_id = ord.getBill_id(int.Parse(drppickroom.SelectedValue.ToString()));
-            ord.addOrder(o);
-            ord.updateService_price(ord.getBill_id(int.Parse(drppickroom.SelectedValue.ToString())));
-			ord.updateTotal_price(ord.getBill_id(int.Parse(drppickroom.SelectedValue.ToString())));
+			ord.addOrder(o);
+			ord.updateService_price(int.Parse(drppickroom.SelectedValue.ToString()));
+			ord.updateTotal_price(int.Parse(drppickroom.SelectedValue.ToString()));
             err_msg.ForeColor = System.Drawing.Color.White;
             err_msg.Text = "Đặt dịch vụ thành công";
         }

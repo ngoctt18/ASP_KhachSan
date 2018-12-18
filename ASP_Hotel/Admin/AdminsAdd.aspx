@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
         <h2>Thêm admin</h2>
-    <asp:Table runat="server" ID="t1">
+    <asp:Table runat="server" ID="t1" class="table table-bordered">
         <asp:TableRow>
             <asp:TableCell>Phone</asp:TableCell>
             <asp:TableCell><asp:TextBox ID="txtphone" runat="server" required=""/></asp:TableCell></asp:TableRow><asp:TableRow>

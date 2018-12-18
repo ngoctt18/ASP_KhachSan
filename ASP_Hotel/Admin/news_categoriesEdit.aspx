@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentTable" Runat="Server">
             <h2>Cập nhật thông tin danh mục</h2>
-    <asp:Table runat="server" ID="t1">
+    <asp:Table runat="server" ID="t1" class="table table-bordered">
         <asp:TableRow>
             <asp:TableCell>ID</asp:TableCell>
             <asp:TableCell><asp:TextBox ID="txtid" runat="server" Enabled="false" /></asp:TableCell></asp:TableRow><asp:TableRow>

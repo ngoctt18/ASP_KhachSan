@@ -20,7 +20,7 @@ public class lienhe
     public List<contacts> contacts()
     {
         List<contacts> li = new List<contacts>();
-        string strSql = " select * from contacts";
+        string strSql = " select * from contacts ORDER BY contact_id DESC";
         con.Open();
         SqlCommand cmd = new SqlCommand(strSql, con);
         SqlDataReader rd = cmd.ExecuteReader();

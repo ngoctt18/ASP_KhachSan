@@ -7,7 +7,7 @@
 	<h2>Danh sách khách hàng</h2>
     <asp:GridView ID="grdDskh" runat="server" AutoGenerateColumns="false" class="table-bordered table" >
         <Columns>
-            <asp:BoundField DataField="user_id" HeaderText="user_id" />
+            <asp:BoundField DataField="user_id" HeaderText="User_id" />
             <asp:BoundField DataField="phone" HeaderText="Phone" />
             <asp:BoundField DataField="password" HeaderText="Password" />
             <asp:BoundField DataField="email" HeaderText="Email" />
@@ -26,6 +26,6 @@
         </Columns>
     </asp:GridView>
     <p></p>
-    <asp:Button class="btn btn-success" ID="bthem" runat="server" PostBackUrl="~/Admin/Themkh.aspx" Text="Them khach hang" />
+    <asp:Button class="btn btn-success" ID="bthem" runat="server" PostBackUrl="~/Admin/Themkh.aspx" Text="Thêm Khách Hàng" />
 </asp:Content>
 

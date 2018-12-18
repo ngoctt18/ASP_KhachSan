@@ -113,11 +113,11 @@
 								<asp:TextBox type="email" ID="txtemail" runat="server" placeholder="Email" required=""></asp:TextBox>
 
 								<asp:TextBox ID="Message" runat="server" placeholder="Message" required=""></asp:TextBox>
-
+								<br />
+								<asp:Label ID="msg" runat="server" ForeColor="Red"></asp:Label>
 								<asp:Button ID="btnthem" runat="server" Text="Submit" OnClick="btnthem_Click"  OnClientClick="return confirm('Bạn có muốn gửi liên hệ?')"/>
 							</form>
 						</div>
-						<asp:Label ID="msg" runat="server" ForeColor="Red"></asp:Label>
 					</div>
 				</div>
 				<!--get in touch end here-->

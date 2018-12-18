@@ -9,7 +9,7 @@
         <asp:TableRow>
             <asp:TableCell>ID</asp:TableCell>
             <asp:TableCell><asp:TextBox ID="txtid" runat="server" Enabled="false" /></asp:TableCell></asp:TableRow><asp:TableRow>
-            <asp:TableCell>Phone</asp:TableCell><asp:TableCell><asp:TextBox ID="txtphone" runat="server"/></asp:TableCell></asp:TableRow><asp:TableRow>
+            <asp:TableCell>Phone</asp:TableCell><asp:TableCell><asp:TextBox ID="txtphone" runat="server" required=""/></asp:TableCell></asp:TableRow><asp:TableRow>
             <asp:TableCell>Password</asp:TableCell><asp:TableCell><asp:TextBox ID="txtpassword" runat="server"/></asp:TableCell></asp:TableRow><asp:TableRow>
             <asp:TableCell>Email</asp:TableCell><asp:TableCell><asp:TextBox ID="txtemail" runat="server"/></asp:TableCell></asp:TableRow><asp:TableRow>
             <asp:TableCell>Address</asp:TableCell><asp:TableCell><asp:TextBox ID="txtaddress" runat="server"/></asp:TableCell></asp:TableRow><asp:TableRow>

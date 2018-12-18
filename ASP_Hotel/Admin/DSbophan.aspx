@@ -23,6 +23,6 @@
         </Columns>
     </asp:GridView>
     <p></p>
-    <asp:Button class="btn btn-success" ID="bthem" runat="server" PostBackUrl="~/Admin/Thembp.aspx" Text="Them bộ phận" />
+    <asp:Button class="btn btn-success" ID="bthem" runat="server" PostBackUrl="~/Admin/Thembp.aspx" Text="Thêm bộ phận" />
 </asp:Content>
 

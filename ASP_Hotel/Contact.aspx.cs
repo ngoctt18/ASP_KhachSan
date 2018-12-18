@@ -36,9 +36,9 @@ public partial class Contact : System.Web.UI.Page
 			s.message = Message.Text;
 
 			data.Themlh(s);
-			msg.ForeColor = System.Drawing.Color.Blue;
-			msg.Text = "Them thanh cong";
-
+			msg.ForeColor = System.Drawing.Color.Green;
+			msg.Text = "Bạn đã gửi liên hệ thành công!";
+			Response.Write("<script>alert('Bạn đã gửi liên hệ thành công!')</script>");
 
 		}
 		catch (Exception ex)
