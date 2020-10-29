@@ -18,8 +18,14 @@ Source code + Báo cáo chi tiết cho môn LẬP TRÌNH ỨNG DỤNG CƠ SỞ D
 
 # Từ khóa
 
+
 # Hướng dẫn cài đặt
-1. Bạn tải về và cài đặt Visual Studio Code (hơi nặng) và SQL Server để có IDE code và chạy website lên
-2. Giải nén source code ra
-3. Vào source: tạo database trên SQL server rồi import file qlkhachsan.sql vào database vừa tạo
-4. Mở file ASP_Hotel.sln (đây là file chạy của website)
+1. Bạn tải về và cài đặt Visual Studio Code (hơi nặng) và SQL Server để có IDE mở code, hệ quản trị để xem database
+2. Giải nén source code ra thư mục C:\Users\Admin\source\repos
+3. Mở SQL Server và chạy file qlkhachsan.sql để tạo database và data mẫu
+4. Mở file ASP_Hotel.sln (đây là file chạy của website) trên Visual Stutio
+5. Bạn sửa lại Connection string theo database trên máy của bạn cho các file trong thư mục App_code/Admin và App_Code/User (Đã có hướng dẫn trong ảnh)
+6. Ở Visual studio bạn mở file index.aspx và chạy chương trình lên (phải chạy ở file index.aspx)
+
+
+- Tài khoản admin: 123456/123456
